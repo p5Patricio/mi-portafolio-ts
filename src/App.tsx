@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './App.css'; 
+import logo from './assets/LogosinFondo.png'; 
+import AppContent from './AppContent';
+// 1. Importa tu nuevo componente de borde
+import PageBorder from './components/PageBorder'; 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFinishing, setIsFinishing] = useState(false);
+
+  useEffect(() => {
+    // ... (la lógica de los temporizadores sigue igual)
+    const finishTimer = setTimeout(() => {
+      setIsFinishing(true);
+    }, 1500);
+
+    const loadTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(finishTimer);
+      clearTimeout(loadTimer);
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-wrapper">
+      <img
+        src={logo}
+        className={`persistent-logo ${isFinishing ? 'finished' : ''}`}
+        alt="Logo principal de mi portafolio"
+      />
+
+      {isLoading && <div className="splash-veil"></div>}
+      
+      {/* 2. Renderiza el borde y el contenido cuando la carga termina */}
+      {!isLoading && (
+        <>
+          <PageBorder />
+          <AppContent />
+        </>
+      )}
     </div>
   );
 }

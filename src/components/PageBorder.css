@@ -1,0 +1,59 @@
+.page-border-svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9990;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* --- ESTILOS BASE (COMUNES) --- */
+.base-line, .light-pulse {
+  fill: none;
+  stroke: #61dafb;
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: var(--path-length);
+}
+
+.base-line {
+  stroke-width: 1;
+}
+
+.light-pulse {
+  stroke-width: 4px;
+  stroke-linecap: round;
+  filter: blur(4px);
+  /* Un pulso de luz más pequeño y sutil */
+  stroke-dasharray: 80 var(--path-length); 
+}
+
+/* --- FASE 1: ANIMACIÓN DE DIBUJADO --- */
+/* Esta clase aplica la animación de dibujado a AMBAS líneas */
+.base-line.animate-draw,
+.light-pulse.animate-draw {
+  animation: draw-line 2.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- FASE 2: ANIMACIÓN DE MOVIMIENTO (SOLO PARA LA LUZ) --- */
+/* Esta clase se AÑADE a la luz cuando la Fase 1 termina */
+.light-pulse.animate-pulse {
+  /* La animación de pulso es más lenta y suave */
+  animation: pulse-light 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-light {
+  from {
+    /* El estado inicial es el final del dibujado (offset 0) */
+    stroke-dashoffset: 0;
+  }
+  to {
+    /* El estado final es al final del camino */
+    stroke-dashoffset: calc(0px - var(--path-length));
+  }
+}

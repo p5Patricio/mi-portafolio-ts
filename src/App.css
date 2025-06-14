@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0D0907;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,54 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Animación de Fade-In */
+.fade-in {
+  animation: fadeInAnimation 1s ease-in forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ... tus otros estilos de App.css ... */
+
+/* El velo negro que reemplaza al componente SplashScreen */
+.splash-veil {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0D0907;
+  z-index: 9998;
+}
+
+
+/* Estilos para el logo que ahora es persistente */
+.persistent-logo {
+  /* Lo posicionamos en el centro de la pantalla */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* El truco para centrar perfectamente */
+  
+  width: 350px;
+  z-index: 9999; /* Siempre por encima de todo */
+  
+  /* La misma transición suave de antes */
+  transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Estado final del logo, se mueve hacia arriba y se encoge */
+.persistent-logo.finished {
+  width: 140px;
+  /* Ahora se mueve desde el centro (-50%) hasta la parte superior */
+  transform: translate(-50%, -50vh);
 }

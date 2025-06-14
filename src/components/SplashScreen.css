@@ -1,0 +1,10 @@
+/* Ahora es solo un velo negro que ocupa toda la pantalla */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0D0907;
+  z-index: 9998; /* Un poco por detrás del logo */
+}

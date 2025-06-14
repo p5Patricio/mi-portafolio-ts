@@ -1,3 +1,20 @@
+/* PASO 1: DEFINIR LAS PALETAS DE COLORES (VARIABLES) PARA CADA TEMA */
+/* Estos son los colores que se usarán cuando el <body> tenga la clase 'light-theme' */
+body.light-theme {
+  --background-color: #f4f4f4; /* Un gris muy claro */
+  --text-color: #121212; /* Un negro suave */
+  --primary-color: #007bff; /* Un azul estándar para enlaces y detalles */
+}
+
+/* Estos son los colores que se usarán cuando el <body> tenga la clase 'dark-theme' */
+body.dark-theme {
+  --background-color: #0D0907; /* <- Tu color oscuro original */
+  --text-color: #e0e0e0; /* Un blanco suave */
+  --primary-color: #61dafb; /* El azul cian que ya usas */
+}
+
+
+/* PASO 2: MODIFICAR EL 'body' PARA USAR LAS VARIABLES */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +22,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* --- CAMBIOS IMPORTANTES AQUÍ --- */
+  /* background-color: #0D0907;  <-- SE ELIMINA ESTA LÍNEA FIJA */
+
+  /* AÑADIMOS ESTAS LÍNEAS PARA USAR LAS VARIABLES */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  
+  /* BONUS: Una transición suave para que el cambio de tema sea agradable */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* PASO 3 (OPCIONAL PERO RECOMENDADO): ACTUALIZAR OTROS COMPONENTES */
+/* Estilo para el contenedor del texto y el cursor */
+.typing-cursor {
+  font-weight: bold;
+  /* Ahora el cursor usará el color primario del tema actual */
+  border-right: 2px solid var(--primary-color); 
+  animation: blink 0.7s steps(1) infinite;
+}
+
+/* Definición de la animación de parpadeo */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
