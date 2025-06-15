@@ -12,6 +12,7 @@ function AppContent() {
   return (
     // Más adelante aquí añadiremos la clase para el fade-in
     <div className="App fade-in">
+      <ThemeToggleButton className="theme-toggle-button" />
       <header className="App-header">
         <TextCursor 
                 text="."
@@ -27,7 +28,6 @@ function AppContent() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
-          <ThemeToggleButton />
           <LanguageSelector />
         </p>
         <a // Corregí un error de sintaxis que tenías aquí

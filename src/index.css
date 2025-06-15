@@ -1,15 +1,15 @@
 /* PASO 1: DEFINIR LAS PALETAS DE COLORES (VARIABLES) PARA CADA TEMA */
 /* Estos son los colores que se usarán cuando el <body> tenga la clase 'light-theme' */
 body.light-theme {
-  --background-color: #f4f4f4; /* Un gris muy claro */
+  --background-color: #f3f6f8; /* Un gris muy claro */
   --text-color: #121212; /* Un negro suave */
   --primary-color: #007bff; /* Un azul estándar para enlaces y detalles */
 }
 
 /* Estos son los colores que se usarán cuando el <body> tenga la clase 'dark-theme' */
 body.dark-theme {
-  --background-color: #0D0907; /* <- Tu color oscuro original */
-  --text-color: #e0e0e0; /* Un blanco suave */
+  --background-color: #151722; /* <- Tu color oscuro original */
+  --text-color: #ffffff; /* Un blanco suave */
   --primary-color: #61dafb; /* El azul cian que ya usas */
 }
 

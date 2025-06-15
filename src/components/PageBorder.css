@@ -16,10 +16,14 @@
 }
 
 .base-line {
+  fill: none;
+  stroke: var(--primary-color);
   stroke-width: 1;
 }
 
 .light-pulse {
+  fill: none;
+  stroke: var(--primary-color);
   stroke-width: 4px;
   stroke-linecap: round;
   filter: blur(4px);
