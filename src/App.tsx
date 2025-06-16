@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css'; 
 import logo from './assets/LogosinFondo.png'; 
 import AppContent from './AppContent';
-// 1. Importa tu nuevo componente de borde
-import PageBorder from './components/PageBorder'; 
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +36,6 @@ function App() {
       {/* 2. Renderiza el borde y el contenido cuando la carga termina */}
       {!isLoading && (
         <>
-          <PageBorder />
           <AppContent />
         </>
       )}
