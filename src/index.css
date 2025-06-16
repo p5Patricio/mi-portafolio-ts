@@ -8,7 +8,7 @@ body.light-theme {
 
 /* Estos son los colores que se usarán cuando el <body> tenga la clase 'dark-theme' */
 body.dark-theme {
-  --background-color: #151722; /* <- Tu color oscuro original */
+  --background-color: #040316; /* <- Tu color oscuro original */
   --text-color: #ffffff; /* Un blanco suave */
   --primary-color: #61dafb; /* El azul cian que ya usas */
 }
