@@ -62,7 +62,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0D0907;
+  background-color: #040316;
   z-index: 9998;
 }
 
@@ -86,7 +86,7 @@
 .persistent-logo.finished {
   width: 140px;
   /* Ahora se mueve desde el centro (-50%) hasta la parte superior */
-  transform: translate(-50%, -50vh);
+  transform: translate(-101vh, -50vh);
 }
 
 /* ...tu css existente... */

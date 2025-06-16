@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
 // La ruta a TextCursor puede variar según tu estructura, ajústala si es necesario
@@ -25,19 +24,9 @@ function AppContent() {
                 maxPoints={4}
           />
         <Home />
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
           <LanguageSelector />
         </p>
-        <a // Corregí un error de sintaxis que tenías aquí
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

@@ -8,7 +8,6 @@ const Home = () => {
     <div>
       {/* Usamos la función t() con la clave de la traducción */}
       <h1>{t('welcomeTitle')}</h1>
-      <p>{t('welcomeSubtitle')}</p>
     </div>
   );
 };
