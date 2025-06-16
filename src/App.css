@@ -15,7 +15,7 @@
 
 .App-header {
   /* Ahora el fondo y el color del texto dependen del tema */
-  background-color: var(--background-color);
+  background-color: transparent;;
   color: var(--text-color);
 
   min-height: 100vh;

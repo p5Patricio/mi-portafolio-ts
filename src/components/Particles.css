@@ -1,5 +1,21 @@
 .particles-container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* --- LA CORRECCIÓN CLAVE ESTÁ AQUÍ --- */
+  /* Antes usábamos %, que depende del padre. Ahora usamos unidades de la ventana. */
+  width: 100vw;  /* 100% del Ancho de la Ventana (Viewport Width) */
+  height: 100vh; /* 100% de la Altura de la Ventana (Viewport Height) */
+
+  z-index: -1; /* Lo mantiene detrás de todo */
+
+  /* BONUS: Esto asegura que el lienzo no pueda ser "clicado" accidentalmente */
+  pointer-events: none; 
+}
+
+.particles-container canvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
