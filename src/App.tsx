@@ -28,7 +28,7 @@ function App() {
     };
   }, []);
 
-  const darkThemeParticleColors = ['#61dafb', '#ffffff']; // Azul y blanco para el tema oscuro
+  const darkThemeParticleColors = ['#0747a1', '#ffffff']; // Azul y blanco para el tema oscuro
   const lightThemeParticleColors = ['#000000', '#7600bc']; // Negro y un gris oscuro para el tema claro
 
   return (

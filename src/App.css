@@ -84,9 +84,9 @@
 
 /* Estado final del logo, se mueve hacia arriba y se encoge */
 .persistent-logo.finished {
-  width: 140px;
+  width: 123px;
   /* Ahora se mueve desde el centro (-50%) hasta la parte superior */
-  transform: translate(-101vh, -50vh);
+  transform: translate(-103vh, -50vh);
 }
 
 /* ...tu css existente... */

@@ -6,16 +6,22 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   es: {
     translation: {
-      "welcomeTitle": "Bienvenido a mi Portafolio",
-      "welcomeSubtitle": "Esta es la página de inicio, ¡construida con React y TypeScript!",
+      "welcomeTitle": "Hola mundo",
+      "welcomeSubtitle": "Soy un ingeniero de software y desarrollador backend",
+      "Proyectos": "Proyectos",
+      "Sobremi": "Sobre mí",
+      "Servicios": "Servicios",
       "changeToEnglish": "Switch to English",
       "changeToSpanish": "Cambiar a Español"
     }
   },
   en: {
     translation: {
-      "welcomeTitle": "Welcome to my Portfolio",
-      "welcomeSubtitle": "This is the home page, built with React and TypeScript!",
+      "welcomeTitle": "Hello world",
+      "welcomeSubtitle": "I am a software engineer and backend developer",
+      "Proyectos": "Projects",
+      "Sobremi": "About me",
+      "Servicios": "Services",
       "changeToEnglish": "Switch to English",
       "changeToSpanish": "Cambiar a Español"
     }
