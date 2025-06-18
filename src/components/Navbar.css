@@ -1,0 +1,249 @@
+/* src/components/Navbar.css */
+
+.navbar-container {
+  /* Posicionamiento fijo en la parte superior */
+  position: fixed;
+  top: 20px;
+  left: 180px; /* Alineado con el borde de la página */
+  right: 20px;
+  z-index: 10;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* --- EFECTO GLASSMORPHISM --- */
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 12px;
+}
+
+/* REEMPLAZAR los estilos de .navbar-links en src/components/Navbar.css con ESTO */
+
+/* REEMPLAZA los estilos existentes de .navbar-links en src/components/Navbar.css con ESTO */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* El tag <a> será el contenedor de la cápsula y el responsable de la animación del borde */
+.navbar-links a {
+  position: relative; /* Contexto para el span interior */
+  padding: 2px; /* Este padding define el grosor del borde */
+  text-decoration: none;
+  border-radius: 50px; /* Borde de la cápsula */
+  overflow: hidden; /* Oculta el gradiente que se sale */
+}
+
+/* El pseudo-elemento que crea la luz viajera */
+.navbar-links a::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: -2px; /* Ligeramente más grande que el botón para crear el borde */
+  border-radius: inherit; /* Hereda la forma de la cápsula */
+
+  /*
+    CAMBIO DE TÉCNICA: Usamos un gradiente cónico.
+    Esto crea dos "trozos" de luz opuestos entre sí.
+  */
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0%,
+    var(--primary-color) 25%, /* El primer trozo de luz */
+    transparent 50%,
+    var(--primary-color) 75%, /* El segundo trozo de luz */
+    transparent 100%
+  );
+  
+  /* Aplicamos un desenfoque para que los trozos de luz emitan un brillo suave */
+  filter: blur(10px);
+
+  /* La animación ahora rota el pseudo-elemento completo */
+  animation: neon-border-rotate 4s linear infinite;
+}
+
+@keyframes neon-border-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* El <span> interior es el que le da el color de fondo a la cápsula, creando el efecto "hueco" */
+.navbar-links a span {
+  display: block;
+  position: relative;
+  z-index: 2; /* Por encima de la animación del borde */
+  padding: 10px 25px;
+  border-radius: inherit; /* Hereda el borde redondeado para encajar perfectamente */
+  background-color: transparent; /* Un color de fondo oscuro, ajústalo a tu gusto */
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover span {
+  color: var(--primary-color);
+}
+
+/* --- Estilos para los controles (Idioma y Tema) --- */
+
+/* Estilos para los botones del LanguageSelector */
+.navbar-controls {
+  display: flex;
+  flex-direction: row; /* Asegura la dirección horizontal */
+  align-items: center;  /* Alinea verticalmente los items en el centro */
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar-controls button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo específico para el botón de idioma que está deshabilitado */
+.navbar-controls button:disabled {
+  color: var(--primary-color);
+  font-weight: bold;
+  cursor: default;
+  background-color: transparent;
+}
+
+
+/* Estilo específico para el botón de tema DENTRO de la navbar */
+/* Esto sobreescribe los estilos fijos que tenía antes */
+.theme-toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.theme-toggle-slider input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 34px;
+  transition: background-color 0.4s;
+  border: 1px solid var(--primary-color);
+}
+
+.slider-nub {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 3px;
+  background-color: var(--sombra-color);
+  border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  overflow: hidden;
+  
+  /* CAMBIO ÚNICO Y DEFINITIVO: Usamos Grid para que 'grid-area' funcione */
+  display: grid; 
+  place-items: center; /* Manera corta de centrar en Grid */
+}
+
+.slider-nub .icon {
+    /* CAMBIO: Ya no necesitan position absolute */
+    font-size: 16px;
+    line-height: 1; /* Ayuda a centrar emojis verticalmente */
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    
+    /* CAMBIO: Se posicionan en la misma celda de grid para poder hacer el fade */
+    grid-area: 1 / 1; 
+}
+.slider-nub .moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+.slider-nub .sun {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+/* ESTADO ACTIVADO (TEMA OSCURO) */
+.theme-toggle-slider input:checked + .slider-track .slider-nub {
+  transform: translateX(26px);
+}
+.theme-toggle-slider input:checked + .slider-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.theme-toggle-slider input:checked + .slider-track .slider-nub .moon {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+.theme-toggle-slider input:checked + .slider-track .slider-nub .sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* AÑADIR AL FINAL DE src/components/Navbar.css */
+
+.language-selector {
+  position: relative; /* Contexto para posicionar el menú */
+}
+
+.language-toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-toggle-button .arrow {
+  border: solid var(--text-color);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: transform 0.2s ease-in-out;
+}
+.language-toggle-button .arrow.down { transform: rotate(45deg); }
+.language-toggle-button .arrow.up { transform: translateY(2px) rotate(-135deg); }
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background-color: rgba(30, 30, 50, 0);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--contorno-color);
+  border-radius: 8px;
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  width: 120px;
+  z-index: 20;
+}
+
+.language-menu li button {
+  width: 100%;
+  text-align: left;
+}

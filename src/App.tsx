@@ -2,6 +2,7 @@
 
 // CAMBIO: Importa useMemo
 import React, { useState, useEffect, useContext, useMemo } from 'react';
+import { Link } from 'react-router-dom'
 import './App.css'; 
 import AppContent from './AppContent';
 import Particles from './components/Particles';
@@ -67,11 +68,14 @@ function App() {
           alphaParticles={false}
           disableRotation={false}
         />
-      <img
-        src={theme === 'dark' ? logoDarkTheme : logoLightTheme}
-        className={`persistent-logo ${isFinishing ? 'finished' : ''}`}
-        alt="Logo principal de mi portafolio"
-      />
+        
+      <Link to="/" className={`persistent-logo-link ${isFinishing ? 'finished' : ''}`}>
+          <img
+            src={theme === 'dark' ? logoDarkTheme : logoLightTheme}
+            className="persistent-logo-image"
+            alt="Logo principal de mi portafolio - Ir a Inicio"
+          />
+        </Link>
 
       {isLoading && <div className="splash-veil"></div>}
       

@@ -85,52 +85,45 @@
 
 
 /* Estilos para el logo que ahora es persistente */
-.persistent-logo {
-  /* Lo posicionamos en el centro de la pantalla */
+.persistent-logo-link {
   position: fixed;
+  z-index: 3;
+  
+  /* --- ESTADO INICIAL --- */
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); /* El truco para centrar perfectamente */
+  width: 350px; /* Ancho inicial del logo */
+  transform: translate(-50%, -50%); /* Centrado perfecto */
   
-  width: 350px;
-  /* CAMBIO: Ajustamos el z-index para que esté por encima del velo. */
-  z-index: 3; /* Capa 3: El elemento principal de la animación, por encima del velo. */
-  
-  /* La misma transición suave de antes */
-  transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+  /* La transición se aplica al contenedor */
+  transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), 
+              width 1.5s cubic-bezier(0.65, 0, 0.35, 1),
+              left 1.5s cubic-bezier(0.65, 0, 0.35, 1),
+              top 1.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* Estado final del logo, se mueve hacia arriba y se encoge */
-.persistent-logo.finished {
-  width: 123px;
-  /* Ahora se mueve desde el centro (-50%) hasta la parte superior */
-  transform: translate(-103vh, -50vh);
+/* La imagen ahora es flexible y ocupa el 100% de su contenedor */
+.persistent-logo-image {
+  width: 100%; /* La imagen siempre se ajustará al tamaño del Link */
+  height: auto;
+  display: block;
+}
+
+/* --- ESTADO FINAL --- */
+.persistent-logo-link.finished {
+  width: 136px; /* Ancho final del logo (ajusta si lo necesitas) */
+  
+  /* Le decimos explícitamente la posición final */
+  left: 27px;
+  top: -4px;
+  
+  /* Reseteamos el transform para que no interfiera con la posición final */
+  transform: translate(0, 0); 
 }
 
 /* ...tu css existente... */
 
 /* Estilos para el botón de cambio de tema */
-.theme-toggle-button {
-  position: fixed; /* Lo posicionamos de forma fija en la pantalla */
-  top: 20px;
-  right: 30px;
-  /* CAMBIO: Ajustamos el z-index para que sea la capa más alta de todas. */
-  z-index: 4; /* Capa 4: La interfaz de usuario, siempre accesible. */
-
-  /* Estilos para que se vea bien */
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--primary-color);
-  color: var(--text-color);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%; /* Lo hacemos redondo */
-  cursor: pointer;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s, transform 0.2s;
-}
 
 .theme-toggle-button:hover {
   background-color: rgba(255, 255, 255, 0.2);
