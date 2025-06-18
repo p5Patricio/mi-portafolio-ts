@@ -1,19 +1,29 @@
-import React, { useState, useEffect, useContext } from 'react';
+// src/App.tsx
+
+// CAMBIO: Importa useMemo
+import React, { useState, useEffect, useContext, useMemo } from 'react';
 import './App.css'; 
 import AppContent from './AppContent';
 import Particles from './components/Particles';
 import { ThemeContext } from './context/ThemeContext';
 import logoDarkTheme from './assets/LogoDark.png'; 
 import logoLightTheme from './assets/LogoLight.png';
+import ClickSpark from './components/ClickSpark';
+
+// CAMBIO: Mueve estas definiciones fuera del componente.
+// Al ser constantes, no necesitan ser recreadas en cada render.
+const darkThemeParticleColors = ['#0747a1', '#ffffff'];
+const lightThemeParticleColors = ['#000000', '#7600bc'];
+const darkThemeClickSpark = '#ffffff';
+const lightThemeClickSpark = '#000000';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFinishing, setIsFinishing] = useState(false);
-
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    // ... (la lógica de los temporizadores sigue igual)
+    // La lógica de los temporizadores sigue igual, está perfecta.
     const finishTimer = setTimeout(() => {
       setIsFinishing(true);
     }, 1500);
@@ -28,13 +38,27 @@ function App() {
     };
   }, []);
 
-  const darkThemeParticleColors = ['#0747a1', '#ffffff']; // Azul y blanco para el tema oscuro
-  const lightThemeParticleColors = ['#000000', '#7600bc']; // Negro y un gris oscuro para el tema claro
+  // CAMBIO: Usa useMemo para que el array de colores solo se recalcule si el 'theme' cambia.
+  // Esto evita crear un nuevo array en los re-renders causados por isLoading o isFinishing.
+  const particleColors = useMemo(() => {
+    return theme === 'dark' ? darkThemeParticleColors : lightThemeParticleColors;
+  }, [theme]);
+
+  const ClickSparkColors = useMemo(() => {
+    return theme === 'dark' ? darkThemeClickSpark : lightThemeClickSpark;
+  }, [theme]);
 
   return (
     <div className="app-wrapper">
+      <ClickSpark
+        sparkColor={ClickSparkColors}
+        sparkSize={10}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+      >
         <Particles
-          particleColors={theme === 'dark' ? darkThemeParticleColors : lightThemeParticleColors}
+          particleColors={particleColors}
           particleCount={200}
           particleSpread={10}
           speed={0.1}
@@ -44,7 +68,6 @@ function App() {
           disableRotation={false}
         />
       <img
-        // Usamos un operador ternario para decidir qué logo mostrar
         src={theme === 'dark' ? logoDarkTheme : logoLightTheme}
         className={`persistent-logo ${isFinishing ? 'finished' : ''}`}
         alt="Logo principal de mi portafolio"
@@ -52,12 +75,12 @@ function App() {
 
       {isLoading && <div className="splash-veil"></div>}
       
-      {/* 2. Renderiza el borde y el contenido cuando la carga termina */}
       {!isLoading && (
         <>
           <AppContent />
         </>
       )}
+      </ClickSpark>
     </div>
   );
 }

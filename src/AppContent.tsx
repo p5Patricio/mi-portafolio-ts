@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
 import Home from './pages/Home';
-// La ruta a TextCursor puede variar según tu estructura, ajústala si es necesario
-import TextCursor from './TextAnimations/TextCursor/TextCursor'; 
 import ThemeToggleButton from './components/ThemeToggleButton';
 import LanguageSelector from './components/LanguageSelector';
 
@@ -13,16 +11,6 @@ function AppContent() {
     <div className="App fade-in">
       <ThemeToggleButton className="theme-toggle-button" />
       <header className="App-header">
-        <TextCursor 
-                text="."
-                delay={0.01}
-                spacing={80}
-                followMouseDirection={true}
-                randomFloat={true}
-                exitDuration={0.3}
-                removalInterval={20}
-                maxPoints={4}
-          />
         <Home />
         <p>
           <LanguageSelector />

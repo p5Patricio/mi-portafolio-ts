@@ -15,7 +15,7 @@
 
 .App-header {
   /* Ahora el fondo y el color del texto dependen del tema */
-  background-color: transparent;;
+  background-color: transparent;
   color: var(--text-color);
 
   min-height: 100vh;
@@ -24,6 +24,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+
+  /* CAMBIO: Añadimos posición relativa y un z-index para asegurar que el contenido
+     se muestre por encima de las partículas pero debajo de la interfaz (como el botón de tema) */
+  position: relative;
+  z-index: 1;
 }
 
 .App-link {
@@ -55,6 +60,17 @@
 
 /* ... tus otros estilos de App.css ... */
 
+/* NUEVA REGLA: Le damos estilo a nuestro fondo de partículas para que sea la capa base. */
+/* Asegúrate de que tu componente en React tenga el id="particles-bg" */
+#particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0; /* Capa 0: El fondo absoluto de toda la aplicación. */
+}
+
 /* El velo negro que reemplaza al componente SplashScreen */
 .splash-veil {
   position: fixed;
@@ -62,8 +78,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #040316;
-  z-index: 9998;
+  /* CAMBIO CLAVE: El velo ahora es transparente para dejar ver las partículas. */
+  background-color: transparent;
+  z-index: 2; /* Capa 2: Por encima del contenido pero debajo del logo. */
 }
 
 
@@ -76,7 +93,8 @@
   transform: translate(-50%, -50%); /* El truco para centrar perfectamente */
   
   width: 350px;
-  z-index: 9999; /* Siempre por encima de todo */
+  /* CAMBIO: Ajustamos el z-index para que esté por encima del velo. */
+  z-index: 3; /* Capa 3: El elemento principal de la animación, por encima del velo. */
   
   /* La misma transición suave de antes */
   transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
@@ -96,7 +114,8 @@
   position: fixed; /* Lo posicionamos de forma fija en la pantalla */
   top: 20px;
   right: 30px;
-  z-index: 10000; /* Asegura que esté por encima de todo, incluso del borde */
+  /* CAMBIO: Ajustamos el z-index para que sea la capa más alta de todas. */
+  z-index: 4; /* Capa 4: La interfaz de usuario, siempre accesible. */
 
   /* Estilos para que se vea bien */
   background-color: rgba(255, 255, 255, 0.1);

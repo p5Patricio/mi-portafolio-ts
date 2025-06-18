@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
 
 import "./Particles.css"; // Ensure you have a CSS file for styling
@@ -241,9 +241,10 @@ const Particles: React.FC<ParticlesProps> = ({
   return (
     <div
       ref={containerRef}
+      id="particles-bg"
       className={`particles-container ${className}`}
     />
   );
 };
 
-export default Particles;
+export default memo(Particles);
