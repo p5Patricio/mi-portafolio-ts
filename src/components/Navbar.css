@@ -223,3 +223,11 @@
   width: 100%;
   text-align: left;
 }
+
+/* En src/components/Navbar.css */
+/* AÑADE esta regla para el enlace activo */
+
+.navbar-links a.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
-// src/components/Navbar.tsx (VERSIÓN MODIFICADA)
+// src/components/Navbar.tsx (VERSIÓN MODIFICADA Y SIMPLE)
 
 import React from 'react';
+import { Link } from 'react-router-dom'; // 1. Importa Link
 import './Navbar.css';
 import LanguageSelector from './LanguageSelector';
 import ThemeToggleButton from './ThemeToggleButton';
@@ -9,16 +10,14 @@ import ThemeToggleButton from './ThemeToggleButton';
 const Navbar = () => {
   return (
     <nav className="navbar-container">
-      {/* Sección de enlaces de navegación */}
       <div className="navbar-links">
-        {/* CAMBIO: Envolvemos cada texto en un <span> */}
-        <a href="#proyectos"><span>Proyectos</span></a>
-        <a href="#servicios"><span>Servicios</span></a>
-        <a href="#sobre-mi"><span>Sobre mí</span></a>
-        <a href="#contacto"><span>Contáctame</span></a>
+        {/* 2. Cambiamos <a> por <Link> y href por to */}
+        <Link to="/proyectos"><span>Proyectos</span></Link>
+        <Link to="/servicios"><span>Servicios</span></Link>
+        <Link to="/sobre-mi"><span>Sobre mí</span></Link>
+        <Link to="/contacto"><span>Contáctame</span></Link>
       </div>
 
-      {/* Sección de controles con tus componentes */}
       <div className="navbar-controls">
         <LanguageSelector />
         <ThemeToggleButton />
