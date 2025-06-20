@@ -1,0 +1,178 @@
+/* src/pages/Home.css (ESTILOS FINALES) */
+
+.presentation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 15vh auto 0 8vw; /* Corregimos la sintaxis de padding también */
+
+  /* AÑADE ESTA LÍNEA */
+  box-sizing: border-box; 
+}
+
+.presentation-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  width: 100%; /* Las filas ocupan todo el ancho */
+  
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* NUEVA CLASE: Para las filas que necesitan indentación */
+.presentation-row.indented {
+  padding-left: 15%; /* Ajusta este porcentaje para más o menos indentación */
+}
+
+.text-large {
+  /* CAMBIO: Volvemos a añadir estas propiedades */
+  font-size: clamp(3rem, 10vw, 7rem);
+  letter-spacing: -2px;
+
+  /* Estas ya estaban y se quedan igual */
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text-color);
+}
+
+.text-small-italic {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  color: var(--text-color);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* En src/pages/Home.css */
+/* --- AÑADE ESTOS ESTILOS AL FINAL DEL ARCHIVO --- */
+
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Columna para la foto (1 parte) y para el texto (2 partes) */
+  gap: 3rem;
+  align-items: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 15vh auto; /* Espacio arriba y abajo, y centrado */
+  padding: 0 5%;
+}
+
+.about-photo-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* Tamaño máximo de la foto */
+  aspect-ratio: 1 / 1; /* Para que sea un cuadrado perfecto */
+  border-radius: 20px;
+  padding: 3px;
+  background: conic-gradient(from 90deg at 50% 50%, var(--primary-color), #9c27b0, var(--primary-color));
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+  border-radius: inherit; /* Hereda el borde redondeado del contenedor */
+  border: 3px solid #0D1117; /* Un borde interior para separar del brillo */
+}
+
+.about-text-container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.about-text-container p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.about-text-container h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 10px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las píldoras pasen a la siguiente línea */
+  gap: 10px;
+}
+
+.skill-pill {
+  background: rgba(43, 43, 78, 0.4);
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+}
+
+.skill-pill:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+
+/* --- Media Query para pantallas pequeñas --- */
+@media (max-width: 800px) {
+  .about-section {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    text-align: center;
+  }
+
+  .about-photo-container {
+    margin: 0 auto; /* Centra la foto */
+  }
+
+  .about-text-container h3 {
+    border-left: none;
+    border-bottom: 2px solid var(--primary-color);
+    padding-left: 0;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+
+  .skills-grid {
+    justify-content: center; /* Centra las píldoras de habilidades */
+  }
+}
+
+/* Añade esto al final de src/pages/Home.css */
+
+.skill-pill {
+  /* ... tus estilos existentes de skill-pill ... */
+  display: inline-flex; /* Para alinear el icono y el texto */
+  align-items: center;
+  gap: 8px; /* Espacio entre el icono y el texto */
+}
+
+.skill-icon {
+  width: 20px;
+  height: 20px;
+  color: currentColor;
+}

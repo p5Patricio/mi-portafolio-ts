@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0);
@@ -145,7 +145,8 @@
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 34px;
   transition: background-color 0.4s;
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--contorno-color);
+  box-shadow: 0px 0px 11px 2px var(--sombra-color);
 }
 .slider-nub {
   position: absolute;

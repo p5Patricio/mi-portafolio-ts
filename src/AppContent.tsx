@@ -13,8 +13,9 @@ import Contacto from './pages/Contacto';
 
 function AppContent() {
   return (
+    <>
+    <Navbar />
     <div className="App fade-in">
-      <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,6 +26,7 @@ function AppContent() {
         </Routes>
       </main>
     </div>
+    </>
   );
 }
 

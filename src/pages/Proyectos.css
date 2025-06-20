@@ -1,0 +1,18 @@
+/* src/pages/Proyectos.css */
+
+.projects-grid {
+  display: grid;
+  /* Crea columnas que se ajustan automáticamente. Cada una tendrá un mínimo de 400px */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem; /* Espacio entre las tarjetas */
+  width: 100%;
+  max-width: 1400px; /* Un ancho máximo para pantallas muy grandes */
+  margin: 0 auto; /* Centra la cuadrícula */
+}
+
+/* Para pantallas más pequeñas, hacemos que ocupen una sola columna */
+@media (max-width: 480px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
