@@ -1,0 +1,89 @@
+/* src/pages/Servicios.css */
+
+/* Estilos base para la página, consistentes con Proyectos.css */
+.page-container {
+  padding: 140px 5% 60px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-container h1 {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 4rem;
+  letter-spacing: 1px;
+}
+
+/* Cuadrícula para las tarjetas de servicio */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Columnas responsivas */
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo para cada tarjeta de servicio */
+.service-card {
+  /* Efecto Glassmorphism */
+  background: rgba(43, 43, 78, 0.073);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.service-card h2 {
+  font-size: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color-secondary); /* Un color ligeramente más tenue para la descripción */
+}
+
+/* Estilos para el contenedor del botón final */
+.cta-container {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+/* Estilo para el botón de llamado a la acción */
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transform: scale(1.05);
+}

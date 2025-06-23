@@ -1,18 +1,49 @@
-/* src/pages/Proyectos.css */
+/* src/pages/Proyectos.css (VERSIÓN CORREGIDA Y MEJORADA) */
 
-.projects-grid {
-  display: grid;
-  /* Crea columnas que se ajustan automáticamente. Cada una tendrá un mínimo de 400px */
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem; /* Espacio entre las tarjetas */
+/* Contenedor principal de la página */
+.page-container {
+  /* Espacio superior amplio para no quedar debajo de la navbar */
+  padding-top: 10px; 
+  /* Espacio en la parte inferior */
+  padding-bottom: 10px;
   width: 100%;
-  max-width: 1400px; /* Un ancho máximo para pantallas muy grandes */
-  margin: 0 auto; /* Centra la cuadrícula */
+  box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
 }
 
-/* Para pantallas más pequeñas, hacemos que ocupen una sola columna */
+/* Estilo para el título principal de la página (h1) */
+.page-container h1 {
+  text-align: center; /* Centramos el título */
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Tamaño de fuente responsive */
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 4rem; /* Aumentamos el espacio entre el título y la galería */
+  letter-spacing: 1px;
+}
+
+/* Cuadrícula de proyectos */
+.projects-grid {
+  display: grid;
+  /* Columnas que se ajustan automáticamente. Cada una tendrá un mínimo de 400px */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem; /* Un poco más de espacio entre las tarjetas */
+  
+  /* Limitamos el ancho y centramos la cuadrícula */
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 5%; /* Padding horizontal para que no se pegue a los bordes */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Media Query para pantallas más pequeñas */
 @media (max-width: 480px) {
+  .page-container h1 {
+    margin-bottom: 2.5rem;
+  }
+  
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    padding: 0 2%;
+    gap: 2rem;
   }
 }

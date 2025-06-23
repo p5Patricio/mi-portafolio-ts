@@ -15,7 +15,7 @@ function AppContent() {
   return (
     <>
     <Navbar />
-    <div className="App fade-in">
+    <div className="App fade-in" style={{ paddingTop: '', marginLeft: '60px' }}>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

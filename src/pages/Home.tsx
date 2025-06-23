@@ -5,9 +5,14 @@ import { useTranslation } from 'react-i18next';
 import './Home.css';
 import TextPressure from '../components/TextPressure';
 import TechIcon from '../components/TechIcon'; // Asegúrate de que este componente esté correctamente implementado
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const Home = () => {
   const { t } = useTranslation();
+
+  const [aboutSectionRef, isAboutSectionVisible] = useIntersectionObserver({
+    threshold: 0.15, // La animación se dispara cuando el 15% de la sección es visible
+  });
 
    const skills = {
     languages: [
@@ -52,7 +57,7 @@ const Home = () => {
             // Desactivamos el cálculo de tamaño para que use el del CSS
             dynamicFontSize={false}
             textColor="var(--text-color)" // Aseguramos que tome el color del CSS
-            minFontSize={112} 
+            minFontSize={130} 
           />
         </div>
 
@@ -69,12 +74,15 @@ const Home = () => {
             className="text-large"
             dynamicFontSize={false}
             textColor="var(--text-color)"
-            minFontSize={112} 
+            minFontSize={130} 
           />
         </div>
         
       </div>
-      <section className="about-section">
+      <section 
+        ref={aboutSectionRef}
+        className={`about-section ${isAboutSectionVisible ? 'is-visible' : ''}`}
+      >
           <div className="about-photo-container">
             {/* ⚠️ REEMPLAZA ESTO CON LA RUTA A TU FOTO */}
             <img src="" alt="Foto de Patricio" className="about-photo" />

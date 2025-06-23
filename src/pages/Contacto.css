@@ -1,0 +1,107 @@
+/* src/pages/Contacto.css */
+
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centramos todo el contenido */
+  text-align: center;
+}
+
+.contact-intro {
+  font-size: 1.2rem;
+  max-width: 600px; /* Limitamos el ancho del párrafo para mejor legibilidad */
+  line-height: 1.7;
+  color: var(--text-color-secondary);
+  margin-bottom: 4rem;
+}
+
+.contact-grid {
+  display: grid;
+  /* Por defecto, creamos 4 columnas de igual tamaño */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px; /* Aumentamos un poco el ancho máximo para más comodidad */
+  margin-bottom: 4rem;
+}
+
+/* --- Media Queries para responsividad --- */
+
+/* Para tablets o pantallas medianas, mostramos una cuadrícula de 2x2 */
+@media (max-width: 1200px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Para móviles, mostramos una sola columna */
+@media (max-width: 600px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  /* Efecto Glassmorphism */
+  background: rgba(43, 43, 78, 0.073);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: var(--primary-color);
+}
+
+.contact-card svg {
+  transition: color 0.3s ease;
+}
+
+.contact-card span {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* El contenedor del botón de descarga */
+.cta-container {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+/* Estilo para el botón de llamado a la acción */
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.cv-button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--primary-color);
+}

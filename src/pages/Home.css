@@ -6,11 +6,10 @@
   align-items: flex-start;
   gap: 1rem;
   width: 100%;
-  max-width: 1200px;
-  padding: 15vh auto 0 8vw; /* Corregimos la sintaxis de padding también */
-
-  /* AÑADE ESTA LÍNEA */
-  box-sizing: border-box; 
+  max-width: 1250px;
+  margin-top: 10px;
+  padding: 15vh 5% 0 0vw; /* Reducimos el padding izquierdo a 5vw */
+  box-sizing: border-box; /* Asegúrate de que esta propiedad esté presente */
 }
 
 .presentation-row {
@@ -45,7 +44,7 @@
   font-weight: 400;
   font-style: italic;
   line-height: 1;
-  color: var(--text-color);
+  color: var(--primary-color);
 }
 
 @keyframes fadeInUp {
@@ -64,13 +63,27 @@
 
 .about-section {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* Columna para la foto (1 parte) y para el texto (2 partes) */
+  grid-template-columns: 1fr 2fr;
   gap: 3rem;
   align-items: center;
   max-width: 1400px;
   width: 100%;
-  margin: 15vh auto; /* Espacio arriba y abajo, y centrado */
+  margin: 15vh auto;
   padding: 0 5%;
+  box-sizing: border-box; /* Añadido para prevenir overflows */
+
+  /* --- ESTILOS PARA LA ANIMACIÓN --- */
+  /* Estado inicial: invisible y movido hacia abajo */
+  opacity: 0;
+  transform: translateY(50px);
+  /* La transición que se aplicará cuando cambie la opacidad o la posición */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Cuando el hook añade la clase .is-visible, la sección se anima a este estado */
+.about-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-photo-container {

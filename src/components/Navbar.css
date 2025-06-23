@@ -1,5 +1,3 @@
-/* src/components/Navbar.css (VERSIÓN FINAL, AHORA SÍ) */
-
 .navbar-container {
   position: fixed;
   top: 20px;
@@ -9,16 +7,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 12px;
+  transition: transform 0.4s ease-in-out;
+}
+.navbar-container.hidden {
+  transform: translateY(-150%);
 }
 
-/* --- SECCIÓN DEL EFECTO DE NEÓN --- */
-
-/* --- SECCIÓN DEL EFECTO DE NEÓN (VERSIÓN CORREGIDA FINAL) --- */
+/* --- INICIO DE LA SECCIÓN: EFECTO "TREN DE PUNTOS" --- */
 
 .navbar-links {
   display: flex;
@@ -27,74 +23,51 @@
   padding: 0.75rem 1.5rem;
 }
 
-/* El <a> es el CONTENEDOR ESTÁTICO. No se anima ni tiene fondo. */
+/* 1. El <a> es el contenedor principal del botón */
 .navbar-links a {
-  position: relative; /* Contexto para el ::before y el span */
+  position: relative;
   z-index: 1;
-  padding: 2px; /* Define el grosor del borde */
   text-decoration: none;
   border-radius: 50px;
-  overflow: hidden; /* Muy importante para que el ::before no se desborde */
+  overflow: hidden; /* Muy importante para que los puntos entren y salgan por los bordes */
+  box-shadow: 0px 0px 11px 2px var(--primary-color);
+  /* Un borde sutil para definir la forma del botón */
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  transition: transform 0.4s ease-in-out, 
+              box-shadow 0.4s ease-in-out,
+              opacity 0.4s ease-in-out,
+              max-width 0.4s ease-in-out,
+              margin-right 0.4s ease-in-out;
 }
 
-/* El pseudo-elemento ::before es el que contiene el brillo Y LA ANIMACIÓN */
-.navbar-links a::before {
-  content: '';
-  position: absolute;
-  z-index: -1; /* Se posiciona DETRÁS del span */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* En src/components/Navbar.css */
+/* --- AÑADE ESTA NUEVA REGLA --- */
 
-  /* El fondo con el gradiente cónico que crea las luces */
-  background: conic-gradient(
-    from 180deg at 50% 50%,
-    transparent 0%,
-    var(--primary-color) 30%,
-    transparent 50%,
-    var(--primary-color) 80%,
-    transparent 100%
-  );
+.navbar-links a:hover,
+.navbar-links a.active {
+  /* Lo movemos 5px hacia arriba y lo escalamos un 5% */
+  transform: translateY(-5px) scale(1.05);
   
-  /* LA ANIMACIÓN SE APLICA AQUÍ, AL BRILLO, NO AL BOTÓN */
-  animation: neon-border-rotate 4s linear infinite;
+  /* Opcional: Hacemos la sombra un poco más intensa para acentuar el efecto "levantado" */
+  box-shadow: 0px 5px 20px 4px var(--primary-color);
 }
 
-/* La animación que rota el brillo */
-@keyframes neon-border-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* El <span> es el CENTRO SÓLIDO y estático del botón */
+/* 2. El <span> contiene el texto y define el tamaño del botón */
 .navbar-links a span {
   display: block;
-  padding: 10px 25px;
-  border-radius: inherit;
-  background-color: var(--background-color); 
+  padding: 10px 25px; /* Padding que define el tamaño que te gustaba */
   color: var(--text-color);
   transition: color 0.3s ease;
-  /* El z-index no es estrictamente necesario aquí, pero es buena práctica */
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Se asegura que el texto esté por encima de la animación */
 }
 
-.navbar-links a:hover span {
+.navbar-links a:hover span,
+.navbar-links a.active span {
   color: var(--primary-color);
+  font-weight: bold;
 }
-
-/* --- FIN DE LA SECCIÓN DE NEÓN --- */
-
-/* --- FIN DE LA SECCIÓN DE NEÓN --- */
-
-
-/* --- Estilos para los controles (Idioma y Tema) --- */
-/* (El resto del archivo no cambia y ya está correcto) */
 
 .navbar-controls {
   display: flex;
@@ -130,6 +103,12 @@
   width: 60px;
   height: 34px;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle-slider:hover {
+  /* Lo movemos 5px hacia arriba y lo escalamos un 5% */
+  transform: translateY(-5px) scale(1.05);  
 }
 .theme-toggle-slider input {
   opacity: 0;
@@ -145,9 +124,10 @@
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 34px;
   transition: background-color 0.4s;
-  border: 2px solid var(--contorno-color);
-  box-shadow: 0px 0px 11px 2px var(--sombra-color);
+  border: 1px solid var(--primary-color);
+  box-shadow: 0px 0px 11px 2px var(--primary-color);
 }
+
 .slider-nub {
   position: absolute;
   height: 26px;
@@ -210,9 +190,7 @@
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background-color: rgba(30, 30, 50, 0);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--contorno-color);
   border-radius: 8px;
   list-style: none;
   padding: 0.5rem;
@@ -223,6 +201,8 @@
 .language-menu li button {
   width: 100%;
   text-align: left;
+  border: 1px solid var(--contorno-color);
+  margin: 4px;
 }
 
 /* En src/components/Navbar.css */
@@ -231,4 +211,38 @@
 .navbar-links a.active {
   color: var(--primary-color);
   font-weight: bold;
+}
+
+/* --- AÑADE ESTO AL FINAL DE Navbar.css --- */
+/* --- Animación para el botón de Inicio --- */
+
+/* Estilos para la animación de ENTRADA */
+/* REEMPLAZA las 4 reglas .inicio-btn-... con este bloque simplificado */
+
+/* Estilos para la animación de ENTRADA */
+.inicio-btn-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+  max-width: 0;
+  margin-right: 0;
+}
+.inicio-btn-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  max-width: 150px;
+  margin-right: 1.5rem; /* El "gap" que tienes entre los botones */
+}
+
+/* Estilos para la animación de SALIDA */
+.inicio-btn-exit {
+  opacity: 1;
+  transform: translateX(0);
+  max-width: 150px;
+  margin-right: 1.5rem;
+}
+.inicio-btn-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  max-width: 0;
+  margin-right: 0;
 }
