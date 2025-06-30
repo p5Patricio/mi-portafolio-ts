@@ -88,7 +88,7 @@ const Home = () => {
       >
         <div className="about-left-column">
           <div className="about-photo-container">
-            <img src="/images/foto-perfil.jpg" alt="Foto de Patricio" className="about-photo" />
+            <img src="/images/foto-perfil.png" alt="Foto de Patricio" className="about-photo" />
           </div>
 
           <a

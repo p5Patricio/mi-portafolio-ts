@@ -61,7 +61,9 @@ const resources = {
         "nba_title": "Clasificador de Roles en la NBA",
         "nba_desc": "Sistema basado en Machine Learning que analiza estadísticas de jugadores de la NBA para clasificarlos en roles modernos y generar planes de entrenamiento personalizados.",
         "art_title": "Clasificador de Arte con MLP",
-        "art_desc": "Un Perceptrón Multicapa (MLP) entrenado para clasificar obras de arte en diferentes estilos (ej. Impresionismo, Cubismo) a partir de una imagen."
+        "art_desc": "Un Perceptrón Multicapa (MLP) entrenado para clasificar obras de arte en diferentes estilos (ej. Impresionismo, Cubismo) a partir de una imagen.",
+        "viewOnGithub": "Ver en GitHub",
+        "viewWebsite": "Ver Página" 
       }
     }
   },
@@ -120,7 +122,9 @@ const resources = {
         "nba_title": "NBA Role Classifier",
         "nba_desc": "A Machine Learning-based system that analyzes NBA player statistics to classify them into modern roles and generate personalized training plans.",
         "art_title": "Art Classifier with MLP",
-        "art_desc": "A Multilayer Perceptron (MLP) trained to classify works of art into different styles (e.g., Impressionism, Cubism) from an image."
+        "art_desc": "A Multilayer Perceptron (MLP) trained to classify works of art into different styles (e.g., Impressionism, Cubism) from an image.", 
+        "viewOnGithub": "View on GitHub",
+        "viewWebsite": "View Website" 
       }
     }
   }
