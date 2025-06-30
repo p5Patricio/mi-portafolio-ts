@@ -231,3 +231,63 @@
   align-items: center; /* Centra la foto y el botón horizontalmente */
   gap: 1.5rem; /* Espacio entre la foto y el botón */
 }
+
+@media (max-width: 768px) {
+  .presentation-container {
+    margin-left: 0;
+    padding: 10vh 5% 0 5%; /* padding izquierdo y derecho igual */
+    align-items: center;
+  }
+
+  .presentation-row {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .presentation-row.indented {
+    padding-left: 0;
+  }
+
+  .text-large {
+    font-size: clamp(2rem, 8vw, 5rem); /* más pequeño para móviles */
+  }
+
+  .text-small-italic {
+    font-size: clamp(1rem, 3.5vw, 1.8rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-photo-container {
+    max-width: 260px; /* más pequeño para celulares compactos */
+  }
+
+  .about-text-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-text-container p {
+    font-size: 1rem;
+  }
+
+  .about-text-container h3 {
+    font-size: 1rem;
+  }
+
+  .skill-pill {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .skill-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .download-cv-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

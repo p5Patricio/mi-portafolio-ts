@@ -1,131 +1,167 @@
-.App {
-  text-align: center;
-}
+  .App {
+    text-align: center;
+  }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
   }
-}
 
-.App-header {
-  /* Ahora el fondo y el color del texto dependen del tema */
-  background-color: transparent;
-  color: var(--text-color);
-
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-
-  /* CAMBIO: Añadimos posición relativa y un z-index para asegurar que el contenido
-     se muestre por encima de las partículas pero debajo de la interfaz (como el botón de tema) */
-  position: relative;
-  z-index: 1;
-}
-
-.App-link {
-  color: var(--primary-color);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
   }
-  to {
-    transform: rotate(360deg);
+
+  .App-header {
+    /* Ahora el fondo y el color del texto dependen del tema */
+    background-color: transparent;
+    color: var(--text-color);
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+
+    /* CAMBIO: Añadimos posición relativa y un z-index para asegurar que el contenido
+      se muestre por encima de las partículas pero debajo de la interfaz (como el botón de tema) */
+    position: relative;
+    z-index: 1;
   }
-}
 
-/* Animación de Fade-In */
-.fade-in {
-  animation: fadeInAnimation 1s ease-in forwards;
-}
-
-@keyframes fadeInAnimation {
-  from {
-    opacity: 0;
+  .App-link {
+    color: var(--primary-color);
   }
-  to {
-    opacity: 1;
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
-}
 
-/* ... tus otros estilos de App.css ... */
+  /* Animación de Fade-In */
+  .fade-in {
+    animation: fadeInAnimation 1s ease-in forwards;
+  }
 
-/* NUEVA REGLA: Le damos estilo a nuestro fondo de partículas para que sea la capa base. */
-/* Asegúrate de que tu componente en React tenga el id="particles-bg" */
-#particles-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
+  @keyframes fadeInAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* ... tus otros estilos de App.css ... */
+
+  /* NUEVA REGLA: Le damos estilo a nuestro fondo de partículas para que sea la capa base. */
+  /* Asegúrate de que tu componente en React tenga el id="particles-bg" */
+  #particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0; /* Capa 0: El fondo absoluto de toda la aplicación. */
+  }
+
+  /* El velo negro que reemplaza al componente SplashScreen */
+  .splash-veil {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* CAMBIO CLAVE: El velo ahora es transparente para dejar ver las partículas. */
+    background-color: transparent;
+    z-index: 2; /* Capa 2: Por encima del contenido pero debajo del logo. */
+  }
+
+
+  /* Estilos para el logo que ahora es persistente */
+  .persistent-logo-link {
+    position: fixed;
+    z-index: 3;
+    
+    /* --- ESTADO INICIAL --- */
+    left: 50%;
+    top: 50%;
+    width: 350px; /* Ancho inicial del logo */
+    transform: translate(-50%, -50%); /* Centrado perfecto */
+    
+    /* La transición se aplica al contenedor */
+    transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), 
+                width 1.5s cubic-bezier(0.65, 0, 0.35, 1),
+                left 1.5s cubic-bezier(0.65, 0, 0.35, 1),
+                top 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  /* La imagen ahora es flexible y ocupa el 100% de su contenedor */
+  .persistent-logo-image {
+    width: 100%; /* La imagen siempre se ajustará al tamaño del Link */
+    height: auto;
+    display: block;
+  }
+
+  /* --- ESTADO FINAL --- */
+  .persistent-logo-link.finished {
+    width: 136px; /* Ancho final del logo (ajusta si lo necesitas) */
+    
+    /* Le decimos explícitamente la posición final */
+    left: 27px;
+    top: -4px;
+    
+    /* Reseteamos el transform para que no interfiera con la posición final */
+    transform: translate(0, 0); 
+  }
+
+  /* ...tu css existente... */
+
+  /* Estilos para el botón de cambio de tema */
+
+  .theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+html, body {
   width: 100%;
-  height: 100vh;
-  z-index: 0; /* Capa 0: El fondo absoluto de toda la aplicación. */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+  /* Responsive para tablets */
+@media (max-width: 768px) {
+  .persistent-logo-link {
+    width: 200px;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+  }
+
+  .persistent-logo-link.finished {
+    width: 100px;
+    left: 20px;
+    top: 8px;
+    transform: translate(0, 0);
+  }
 }
 
-/* El velo negro que reemplaza al componente SplashScreen */
-.splash-veil {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  /* CAMBIO CLAVE: El velo ahora es transparente para dejar ver las partículas. */
-  background-color: transparent;
-  z-index: 2; /* Capa 2: Por encima del contenido pero debajo del logo. */
-}
+/* Responsive para celulares pequeños */
+@media (max-width: 480px) {
+  .persistent-logo-link {
+    width: 160px;
+    top: 35%;
+  }
 
-
-/* Estilos para el logo que ahora es persistente */
-.persistent-logo-link {
-  position: fixed;
-  z-index: 3;
-  
-  /* --- ESTADO INICIAL --- */
-  left: 50%;
-  top: 50%;
-  width: 350px; /* Ancho inicial del logo */
-  transform: translate(-50%, -50%); /* Centrado perfecto */
-  
-  /* La transición se aplica al contenedor */
-  transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), 
-              width 1.5s cubic-bezier(0.65, 0, 0.35, 1),
-              left 1.5s cubic-bezier(0.65, 0, 0.35, 1),
-              top 1.5s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-/* La imagen ahora es flexible y ocupa el 100% de su contenedor */
-.persistent-logo-image {
-  width: 100%; /* La imagen siempre se ajustará al tamaño del Link */
-  height: auto;
-  display: block;
-}
-
-/* --- ESTADO FINAL --- */
-.persistent-logo-link.finished {
-  width: 136px; /* Ancho final del logo (ajusta si lo necesitas) */
-  
-  /* Le decimos explícitamente la posición final */
-  left: 27px;
-  top: -4px;
-  
-  /* Reseteamos el transform para que no interfiera con la posición final */
-  transform: translate(0, 0); 
-}
-
-/* ...tu css existente... */
-
-/* Estilos para el botón de cambio de tema */
-
-.theme-toggle-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+  .persistent-logo-link.finished {
+    width: 80px;
+    left: 16px;
+    top: 10px;
+  }
 }

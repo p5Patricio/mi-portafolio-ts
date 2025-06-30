@@ -108,3 +108,60 @@
   transform: scale(1.05);
   box-shadow: 0 0 15px var(--primary-color);
 }
+
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-card span {
+    font-size: 1.1rem;
+  }
+
+  .contact-card svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contact-intro {
+    font-size: 1.1rem;
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .contact-intro {
+    font-size: 1rem;
+    padding: 0 4%;
+    margin-bottom: 2rem;
+  }
+
+  .contact-card {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .contact-card span {
+    font-size: 1rem;
+  }
+
+  .contact-card svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .copy-feedback {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: var(--text-color-secondary);
+  transition: color 0.3s ease;
+}
+
+.contact-card.copied .copy-feedback {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+}

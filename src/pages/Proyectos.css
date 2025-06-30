@@ -47,3 +47,19 @@
     gap: 2rem;
   }
 }
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    border-radius: 10px;
+  }
+
+  .project-carousel {
+    aspect-ratio: 4 / 3; /* Más alto en celular para mayor legibilidad */
+  }
+}
