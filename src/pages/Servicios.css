@@ -2,7 +2,7 @@
 
 /* Estilos base para la página, consistentes con Proyectos.css */
 .page-container {
-  padding: 140px 5% 60px;
+  padding: 80px 5% 30px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -12,7 +12,7 @@
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   letter-spacing: 1px;
 }
 
@@ -41,7 +41,7 @@
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px var(--sombra-color);
 }
 
 .service-icon {
@@ -65,7 +65,7 @@
 /* Estilos para el contenedor del botón final */
 .cta-container {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 2.8rem;
 }
 
 /* Estilo para el botón de llamado a la acción */

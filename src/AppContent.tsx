@@ -14,8 +14,8 @@ import Contacto from './pages/Contacto';
 function AppContent() {
   return (
     <>
-    <Navbar />
-    <div className="App fade-in" style={{ paddingTop: '', marginLeft: '60px' }}>
+    <div className="App fade-in" style={{ paddingTop: '', marginLeft: '0px' }}>
+      <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

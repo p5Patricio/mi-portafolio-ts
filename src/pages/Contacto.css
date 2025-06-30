@@ -7,11 +7,15 @@
   text-align: center;
 }
 
+.titulo {
+  margin-top: 40px;
+}
+
 .contact-intro {
   font-size: 1.2rem;
   max-width: 600px; /* Limitamos el ancho del párrafo para mejor legibilidad */
   line-height: 1.7;
-  color: var(--text-color-secondary);
+  color: var(--text-color-secondary);;
   margin-bottom: 4rem;
 }
 
@@ -22,7 +26,7 @@
   gap: 2rem;
   width: 100%;
   max-width: 1200px; /* Aumentamos un poco el ancho máximo para más comodidad */
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 /* --- Media Queries para responsividad --- */
@@ -64,7 +68,7 @@
 
 .contact-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px var(--sombra-color);
   color: var(--primary-color);
 }
 
@@ -80,7 +84,6 @@
 /* El contenedor del botón de descarga */
 .cta-container {
   text-align: center;
-  margin-top: 5rem;
 }
 
 /* Estilo para el botón de llamado a la acción */

@@ -33,7 +33,7 @@ const Contacto = () => {
 
   return (
     <div className="page-container contact-page">
-      <h1>{t('contactPage.title')}</h1>
+      <h1 className='titulo'>{t('contactPage.title')}</h1>
       <p className="contact-intro">{t('contactPage.intro')}</p>
 
       <div className="contact-grid">

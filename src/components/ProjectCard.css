@@ -102,5 +102,5 @@
 
 .github-link:hover {
   color: var(--primary-color);
-  background-color: rgba(194, 197, 211, 0.838);
+  background-color: var(--contorno-color);
 }

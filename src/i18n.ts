@@ -51,6 +51,17 @@ const resources = {
         "emailCopied": "¡Copiado!",
         "downloadCV": "Descargar CV",
         "cvDownloaded": "¡CV Descargado!" 
+      },
+      "projectsPage": {
+        "title": "Mis Proyectos",
+        "fitodex_title": "Fitodex",
+        "fitodex_desc": "Plataforma web para la identificación y consulta de plantas, donde desarrollé el backend completo con Node.js y Express, y participé en la maquetación del frontend.",
+        "lsm_title": "Traductor en Tiempo Real de LSM",
+        "lsm_desc": "Aplicación que utiliza la cámara para capturar señas de la Lengua de Señas Mexicana (LSM) y las traduce a texto en tiempo real mediante un modelo de IA.",
+        "nba_title": "Clasificador de Roles en la NBA",
+        "nba_desc": "Sistema basado en Machine Learning que analiza estadísticas de jugadores de la NBA para clasificarlos en roles modernos y generar planes de entrenamiento personalizados.",
+        "art_title": "Clasificador de Arte con MLP",
+        "art_desc": "Un Perceptrón Multicapa (MLP) entrenado para clasificar obras de arte en diferentes estilos (ej. Impresionismo, Cubismo) a partir de una imagen."
       }
     }
   },
@@ -99,6 +110,17 @@ const resources = {
         "emailCopied": "Copied!",
         "downloadCV": "Download CV",
         "cvDownloaded": "CV Downloaded!"
+      },
+      "projectsPage": {
+        "title": "My Projects",
+        "fitodex_title": "Fitodex",
+        "fitodex_desc": "A web platform for plant identification and consultation, where I developed the complete backend with Node.js and Express, and participated in the frontend layout.",
+        "lsm_title": "Real-Time Mexican Sign Language (LSM) Translator",
+        "lsm_desc": "An application that uses the camera to capture Mexican Sign Language (LSM) signs and translates them into text in real-time using an AI model.",
+        "nba_title": "NBA Role Classifier",
+        "nba_desc": "A Machine Learning-based system that analyzes NBA player statistics to classify them into modern roles and generate personalized training plans.",
+        "art_title": "Art Classifier with MLP",
+        "art_desc": "A Multilayer Perceptron (MLP) trained to classify works of art into different styles (e.g., Impressionism, Cubism) from an image."
       }
     }
   }

@@ -7,7 +7,8 @@
   gap: 1rem;
   width: 100%;
   max-width: 1250px;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-left: 70px;
   padding: 15vh 5% 0 0vw; /* Reducimos el padding izquierdo a 5vw */
   box-sizing: border-box; /* Asegúrate de que esta propiedad esté presente */
 }
@@ -65,21 +66,54 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 3rem;
-  align-items: center;
-  max-width: 1400px;
+  /* CAMBIO CLAVE: Alinea los items al inicio de la celda del grid */
+  align-items: start; 
+  max-width: 1500px;
   width: 100%;
   margin: 15vh auto;
   padding: 0 5%;
-  box-sizing: border-box; /* Añadido para prevenir overflows */
-
-  /* --- ESTILOS PARA LA ANIMACIÓN --- */
-  /* Estado inicial: invisible y movido hacia abajo */
+  box-sizing: border-box;
   opacity: 0;
   transform: translateY(50px);
-  /* La transición que se aplicará cuando cambie la opacidad o la posición */
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+.download-cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el ícono y el texto */
+  padding: 10px 20px; /* Padding reducido para un botón más pequeño */
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-cv-button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+/* Estilo para el estado 'descargado' */
+.download-cv-button.copied {
+  background-color: var(--primary-color); /* Un color verde para la confirmación */
+  border-color : var(--primary-color);
+  color: #fff;
+  pointer-events: none; /* Desactiva el clic durante la confirmación */
+}
+
+@media (max-width: 800px) {
+  .about-section {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    text-align: center;
+    /* En móvil, volvemos a centrar los items */
+    align-items: center; 
+  }
+}
 /* Cuando el hook añade la clase .is-visible, la sección se anima a este estado */
 .about-section.is-visible {
   opacity: 1;
@@ -93,6 +127,7 @@
   aspect-ratio: 1 / 1; /* Para que sea un cuadrado perfecto */
   border-radius: 20px;
   padding: 3px;
+  margin-top: 80px;
   background: conic-gradient(from 90deg at 50% 50%, var(--primary-color), #9c27b0, var(--primary-color));
 }
 
@@ -188,4 +223,11 @@
   width: 20px;
   height: 20px;
   color: currentColor;
+}
+
+.about-left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra la foto y el botón horizontalmente */
+  gap: 1.5rem; /* Espacio entre la foto y el botón */
 }

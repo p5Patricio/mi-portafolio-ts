@@ -13,10 +13,10 @@ import ClickSpark from './components/ClickSpark';
 
 // CAMBIO: Mueve estas definiciones fuera del componente.
 // Al ser constantes, no necesitan ser recreadas en cada render.
-const darkThemeParticleColors = ['#0747a1', '#ffffff'];
-const lightThemeParticleColors = ['#000000', '#7600bc'];
-const darkThemeClickSpark = '#ffffff';
-const lightThemeClickSpark = '#000000';
+const darkThemeParticleColors = ['#ff9191', '#ffffff'];
+const lightThemeParticleColors = ['#000000', '#1e6ed7'];
+const darkThemeClickSpark = '#ff9191'; 
+const lightThemeClickSpark = '#1e6ed7';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
