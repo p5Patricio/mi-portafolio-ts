@@ -1,3 +1,4 @@
+/* === CONTENEDOR PRINCIPAL === */
 .navbar-container {
   position: fixed;
   top: 20px;
@@ -14,8 +15,7 @@
   transform: translateY(-150%);
 }
 
-/* --- INICIO DE LA SECCIÓN: EFECTO "TREN DE PUNTOS" --- */
-
+/* === LINKS DE ESCRITORIO === */
 .navbar-links {
   display: flex;
   align-items: center;
@@ -23,61 +23,46 @@
   padding: 0.75rem 1.5rem;
 }
 
-/* 1. El <a> es el contenedor principal del botón */
 .navbar-links a {
   position: relative;
   z-index: 1;
   text-decoration: none;
   border-radius: 50px;
-  overflow: hidden; /* Muy importante para que los puntos entren y salgan por los bordes */
+  overflow: hidden;
   box-shadow: 0px 0px 11px 2px var(--primary-color);
-  /* Un borde sutil para definir la forma del botón */
   border: 1px solid var(--primary-color);
   background-color: transparent;
-  transition: transform 0.4s ease-in-out, 
-              box-shadow 0.4s ease-in-out,
-              opacity 0.4s ease-in-out,
-              max-width 0.4s ease-in-out,
-              margin-right 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
-
-/* En src/components/Navbar.css */
-/* --- AÑADE ESTA NUEVA REGLA --- */
 
 .navbar-links a:hover,
 .navbar-links a.active {
-  /* Lo movemos 5px hacia arriba y lo escalamos un 5% */
   transform: translateY(-5px) scale(1.05);
-  
-  /* Opcional: Hacemos la sombra un poco más intensa para acentuar el efecto "levantado" */
   box-shadow: 0px 5px 20px 4px var(--primary-color);
 }
 
-/* 2. El <span> contiene el texto y define el tamaño del botón */
 .navbar-links a span {
   display: block;
-  padding: 10px 25px; /* Padding que define el tamaño que te gustaba */
+  padding: 10px 25px;
   color: var(--text-color);
   transition: color 0.3s ease;
   position: relative;
-  z-index: 2; /* Se asegura que el texto esté por encima de la animación */
+  z-index: 2;
 }
-
 .navbar-links a:hover span,
 .navbar-links a.active span {
   color: var(--primary-color);
   font-weight: bold;
 }
 
+/* === CONTROLES === */
 .navbar-controls {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 0.75rem 1.5rem;
 }
-
-/* ... (el resto de tus estilos de controles, slider y dropdown que ya funcionaban bien) ... */
 .navbar-controls button {
   background-color: transparent;
   border: 1px solid transparent;
@@ -97,6 +82,8 @@
   cursor: default;
   background-color: transparent;
 }
+
+/* === THEME TOGGLE === */
 .theme-toggle-slider {
   position: relative;
   display: inline-block;
@@ -105,10 +92,8 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .theme-toggle-slider:hover {
-  /* Lo movemos 5px hacia arriba y lo escalamos un 5% */
-  transform: translateY(-5px) scale(1.05);  
+  transform: translateY(-5px) scale(1.05);
 }
 .theme-toggle-slider input {
   opacity: 0;
@@ -127,7 +112,6 @@
   border: 1px solid var(--primary-color);
   box-shadow: 0px 0px 11px 2px var(--primary-color);
 }
-
 .slider-nub {
   position: absolute;
   height: 26px;
@@ -142,18 +126,18 @@
   place-items: center;
 }
 .slider-nub .icon {
-    font-size: 16px;
-    line-height: 1;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    grid-area: 1 / 1; 
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  grid-area: 1 / 1;
 }
 .slider-nub .moon {
-    opacity: 1;
-    transform: rotate(0deg);
+  opacity: 1;
+  transform: rotate(0deg);
 }
 .slider-nub .sun {
-    opacity: 0;
-    transform: rotate(90deg);
+  opacity: 0;
+  transform: rotate(90deg);
 }
 .theme-toggle-slider input:checked + .slider-track .slider-nub {
   transform: translateX(26px);
@@ -162,13 +146,15 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 .theme-toggle-slider input:checked + .slider-track .slider-nub .moon {
-    opacity: 0;
-    transform: rotate(-90deg);
+  opacity: 0;
+  transform: rotate(-90deg);
 }
 .theme-toggle-slider input:checked + .slider-track .slider-nub .sun {
-    opacity: 1;
-    transform: rotate(0deg);
+  opacity: 1;
+  transform: rotate(0deg);
 }
+
+/* === LANGUAGE SELECTOR === */
 .language-selector {
   position: relative;
 }
@@ -184,8 +170,12 @@
   padding: 3px;
   transition: transform 0.2s ease-in-out;
 }
-.language-toggle-button .arrow.down { transform: rotate(45deg); }
-.language-toggle-button .arrow.up { transform: translateY(2px) rotate(-135deg); }
+.language-toggle-button .arrow.down {
+  transform: rotate(45deg);
+}
+.language-toggle-button .arrow.up {
+  transform: translateY(2px) rotate(-135deg);
+}
 .language-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -205,21 +195,66 @@
   margin: 4px;
 }
 
-/* En src/components/Navbar.css */
-/* AÑADE esta regla para el enlace activo */
+/* === BOTÓN HAMBURGUESA === */
+.mobile-menu-toggle {
+  margin-top: 2%;
+  display: none;
+  cursor: pointer;
+  color: var(--text-color);
+  z-index: 30;
+}
 
+/* === MOBILE MENU DESPLEGABLE === */
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  right: 1rem;
+  background-color: var(--background-color);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--sombra-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  animation: slideDown 0.3s ease-out forwards;
+  z-index: 25;
+}
+.mobile-menu a {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 12px;
+  margin: 0.4rem 0;
+  text-align: center;
+  border: 1px solid var(--contorno-color);
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.mobile-menu a:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transform: scale(1.02);
+}
+.mobile-menu a span {
+  display: block;
+  padding: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.mobile-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* === ENLACE ACTIVO === */
 .navbar-links a.active {
   color: var(--primary-color);
   font-weight: bold;
 }
 
-/* --- AÑADE ESTO AL FINAL DE Navbar.css --- */
-/* --- Animación para el botón de Inicio --- */
-
-/* Estilos para la animación de ENTRADA */
-/* REEMPLAZA las 4 reglas .inicio-btn-... con este bloque simplificado */
-
-/* Estilos para la animación de ENTRADA */
+/* === ANIMACIÓN BOTÓN INICIO === */
 .inicio-btn-enter {
   opacity: 0;
   transform: translateX(-100%);
@@ -230,10 +265,8 @@
   opacity: 1;
   transform: translateX(0);
   max-width: 150px;
-  margin-right: 1.5rem; /* El "gap" que tienes entre los botones */
+  margin-right: 1.5rem;
 }
-
-/* Estilos para la animación de SALIDA */
 .inicio-btn-exit {
   opacity: 1;
   transform: translateX(0);
@@ -247,56 +280,7 @@
   margin-right: 0;
 }
 
-/* === BOTÓN HAMBURGUESA === */
-.mobile-menu-toggle {
-  display: none;
-  cursor: pointer;
-  color: var(--text-color);
-  z-index: 20;
-}
-
-/* === MOBILE MENU DESPLEGABLE === */
-.mobile-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: var(--background-color);
-  backdrop-filter: blur(8px);
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 8px 20px var(--sombra-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 0;
-  animation: slideDown 0.3s ease-out forwards;
-}
-
-.mobile-menu a {
-  width: 90%;
-  max-width: 250px;
-  border-radius: 12px;
-  margin: 0.4rem 0;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--contorno-color);
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.mobile-menu a:hover {
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  transform: scale(1.02);
-}
-
-.mobile-menu a span {
-  display: block;
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
+/* === ANIMACIÓN MENÚ === */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -308,11 +292,10 @@
   }
 }
 
-/* Oculta los links de escritorio en móviles */
+/* === RESPONSIVE === */
 .desktop-only {
   display: flex;
 }
-
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: block;
@@ -334,35 +317,7 @@
     right: 0;
   }
 
-  .mobile-menu-toggle {
-    display: block;
-    position: relative;
-    z-index: 30;
-  }
-
   .navbar-controls {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
-    position: absolute;
-    top: 60px;
-    right: 1rem;
-    background: var(--background-color);
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--sombra-color);
-    z-index: 25;
-  }
-
-  .navbar-links a {
-    width: 100%;
-    justify-content: center;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-  }
-
-  .navbar-links a span {
-    padding: 10px 20px;
+    display: none;
   }
 }

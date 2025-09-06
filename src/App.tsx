@@ -1,8 +1,8 @@
 // src/App.tsx
 
-// CAMBIO: Importa useMemo
-import React, { useState, useEffect, useContext, useMemo } from 'react';
-import { Link } from 'react-router-dom'
+// CAMBIO 1: Importa useRef
+import React, { useState, useEffect, useContext, useMemo, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css'; 
 import AppContent from './AppContent';
 import Particles from './components/Particles';
@@ -11,8 +11,6 @@ import logoDarkTheme from './assets/LogoDark.png';
 import logoLightTheme from './assets/LogoLight.png';
 import ClickSpark from './components/ClickSpark';
 
-// CAMBIO: Mueve estas definiciones fuera del componente.
-// Al ser constantes, no necesitan ser recreadas en cada render.
 const darkThemeParticleColors = ['#ff9191', '#ffffff'];
 const lightThemeParticleColors = ['#000000', '#1e6ed7'];
 const darkThemeClickSpark = '#ff9191'; 
@@ -22,9 +20,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFinishing, setIsFinishing] = useState(false);
   const { theme } = useContext(ThemeContext);
+  
+  // CAMBIO 2: Crea una referencia para rastrear si el efecto ya se ejecutó
+  const effectRan = useRef(false);
 
+  // useEffect para manejar la animación del SplashScreen
   useEffect(() => {
-    // La lógica de los temporizadores sigue igual, está perfecta.
     const finishTimer = setTimeout(() => {
       setIsFinishing(true);
     }, 1500);
@@ -39,8 +40,30 @@ function App() {
     };
   }, []);
 
-  // CAMBIO: Usa useMemo para que el array de colores solo se recalcule si el 'theme' cambia.
-  // Esto evita crear un nuevo array en los re-renders causados por isLoading o isFinishing.
+  // useEffect para registrar la visita en Google Sheets.
+  useEffect(() => {
+    // CAMBIO 3: Añade la condición para evitar la doble ejecución
+    // Solo se ejecutará si la bandera es 'false'
+    if (effectRan.current === false) {
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzocTFqUDfWB5kOS6kz592Pmr9FolIgbGFInN7qUCHreYP52zE4W1YKr4YJKEFdatSHA/exec';
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
+      .catch(err => console.log('Error al registrar visita:', err));
+    
+      // CAMBIO 4: Marca la bandera como 'true' después de la primera ejecución
+      return () => {
+        effectRan.current = true;
+      };
+    }
+  }, []); // El array vacío sigue siendo correcto
+
   const particleColors = useMemo(() => {
     return theme === 'dark' ? darkThemeParticleColors : lightThemeParticleColors;
   }, [theme]);
@@ -69,7 +92,7 @@ function App() {
           disableRotation={false}
         />
         
-      <Link to="/" className={`persistent-logo-link ${isFinishing ? 'finished' : ''}`}>
+        <Link to="/" className={`persistent-logo-link ${isFinishing ? 'finished' : ''}`}>
           <img
             src={theme === 'dark' ? logoDarkTheme : logoLightTheme}
             className="persistent-logo-image"
@@ -77,13 +100,13 @@ function App() {
           />
         </Link>
 
-      {isLoading && <div className="splash-veil"></div>}
-      
-      {!isLoading && (
-        <>
-          <AppContent />
-        </>
-      )}
+        {isLoading && <div className="splash-veil"></div>}
+        
+        {!isLoading && (
+          <>
+            <AppContent />
+          </>
+        )}
       </ClickSpark>
     </div>
   );
