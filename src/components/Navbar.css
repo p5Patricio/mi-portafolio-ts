@@ -296,6 +296,18 @@
 .desktop-only {
   display: flex;
 }
+@media (max-width: 1024px) {
+  .navbar-container {
+    /* Reducimos el espaciado fijo de la izquierda */
+    left: 20px;
+  }
+
+  .navbar-links a span {
+    /* Hacemos el texto de los botones un poco más pequeño */
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+}
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: block;

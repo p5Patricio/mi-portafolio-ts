@@ -58,3 +58,25 @@ code {
     border-color: transparent;
   }
 }
+
+.page-container {
+  /* Espacio superior para la navbar fija (aprox. 60px de navbar + 40px de margen) */
+  padding-top: 100px; 
+  padding-bottom: 5rem;
+  
+  /* Centrado y con padding horizontal responsivo */
+  width: 100%;
+  max-width: 1600px; /* Ancho máximo para el contenido */
+  margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box; /* Muy importante */
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding-top: 80px; /* Un poco menos de espacio en móvil */
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}

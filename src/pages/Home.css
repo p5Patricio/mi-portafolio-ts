@@ -6,19 +6,28 @@
   align-items: flex-start;
   gap: 1rem;
   width: 100%;
-  max-width: 1250px;
+  
+  /* Mantenemos el padding responsivo */
+  padding-left: 7%;
+  padding-right: 5%;
+
+  /* Ajustes de espaciado vertical y box-sizing */
   margin-top: 20px;
-  margin-left: 70px;
-  padding: 15vh 5% 0 0vw; /* Reducimos el padding izquierdo a 5vw */
-  box-sizing: border-box; /* Asegúrate de que esta propiedad esté presente */
+  padding-top: 15vh;
+  box-sizing: border-box;
 }
 
 .presentation-row {
   display: flex;
   align-items: baseline;
   gap: 1.5rem;
-  width: 100%; /* Las filas ocupan todo el ancho */
   
+  /* =============================================================== */
+  /* SOLUCIÓN CLAVE: Aseguramos que la fila ocupe el 100% de su      */
+  /* contenedor padre y no más.                                      */
+  width: 100%; /* <-- AÑADE ESTA LÍNEA */
+  /* =============================================================== */
+
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -29,15 +38,20 @@
 }
 
 .text-large {
-  /* CAMBIO: Volvemos a añadir estas propiedades */
-  font-size: clamp(3rem, 10vw, 7rem);
-  letter-spacing: -2px;
+  /* =============================================================== */
+  /* SOLUCIÓN PARA ESCRITORIO: Reducimos el valor de 'vw' para      */
+  /* compensar el padding del contenedor. Pasamos de 10vw a 8.5vw.   */
+  font-size: clamp(3rem, 8.5vw, 7rem); /* <-- MODIFICA ESTA LÍNEA */
+  /* =============================================================== */
 
-  /* Estas ya estaban y se quedan igual */
+  letter-spacing: -2px;
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1;
   color: var(--text-color);
+  
+  /* Mantenemos esta regla de seguridad para romper palabras */
+  overflow-wrap: break-word;
 }
 
 .text-small-italic {
@@ -251,11 +265,11 @@
   }
 
   .text-large {
-    font-size: clamp(2rem, 8vw, 5rem); /* más pequeño para móviles */
+    font-size: clamp(2rem, 10vw, 5rem); /* más pequeño para móviles */
   }
 
   .text-small-italic {
-    font-size: clamp(1rem, 3.5vw, 1.8rem);
+    font-size: clamp(1rem, 5vw, 1.8rem);
   }
 }
 

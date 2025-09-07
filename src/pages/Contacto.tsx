@@ -32,42 +32,44 @@ const Contacto = () => {
   };
 
   return (
-    <div className="page-container contact-page">
-      <h1 className='titulo'>{t('contactPage.title')}</h1>
-      <p className="contact-intro">{t('contactPage.intro')}</p>
+    <div className="page-container">
+      <div className="page-container contact-page">
+        <h1 className='titulo'>{t('contactPage.title')}</h1>
+        <p className="contact-intro">{t('contactPage.intro')}</p>
 
-      <div className="contact-grid">
-        {/* Tarjeta de Contacto 1: GitHub */}
-        <a href="https://github.com/p5Patricio" target="_blank" rel="noopener noreferrer" className="contact-card">
-          <Github size={40} />
-          <span>{t('contactPage.github')}</span>
-        </a>
+        <div className="contact-grid">
+          {/* Tarjeta de Contacto 1: GitHub */}
+          <a href="https://github.com/p5Patricio" target="_blank" rel="noopener noreferrer" className="contact-card">
+            <Github size={40} />
+            <span>{t('contactPage.github')}</span>
+          </a>
 
-        {/* Tarjeta de Contacto 2: LinkedIn */}
-        <a href="https://www.linkedin.com/in/patriciogarc%C3%ADapv/" target="_blank" rel="noopener noreferrer" className="contact-card">
-          <Linkedin size={40} />
-          <span>{t('contactPage.linkedin')}</span>
-        </a>
+          {/* Tarjeta de Contacto 2: LinkedIn */}
+          <a href="https://www.linkedin.com/in/patriciogarc%C3%ADapv/" target="_blank" rel="noopener noreferrer" className="contact-card">
+            <Linkedin size={40} />
+            <span>{t('contactPage.linkedin')}</span>
+          </a>
 
-        {/* Tarjeta de Contacto 3: Correo */}
-        <button 
-          onClick={handleCopyEmail} 
-          className={`contact-card ${isCopied ? 'copied' : ''}`}
-        >
-          {isCopied ? <Check size={40} /> : <Copy size={40} />}
-          <span>{t('contactPage.emailAddress')}</span>
-          <p className="copy-feedback">{isCopied ? t('contactPage.emailCopied') : t('contactPage.emailAction')}</p>
-        </button>
-        <a 
-          href="/CV_Patricio_Garcia.pdf" 
-          download 
-          className={`contact-card ${isDownloaded ? 'copied' : ''}`} // Añadimos clase condicional
-          onClick={handleDownloadClick} // 3. Añadimos el manejador de clic
-        >
-          <Download size={40} />
-          {/* 4. El texto ahora es condicional */}
-          <span>{isDownloaded ? t('contactPage.cvDownloaded') : t('contactPage.downloadCV')}</span>
-        </a>
+          {/* Tarjeta de Contacto 3: Correo */}
+          <button 
+            onClick={handleCopyEmail} 
+            className={`contact-card ${isCopied ? 'copied' : ''}`}
+          >
+            {isCopied ? <Check size={40} /> : <Copy size={40} />}
+            <span>{t('contactPage.emailAddress')}</span>
+            <p className="copy-feedback">{isCopied ? t('contactPage.emailCopied') : t('contactPage.emailAction')}</p>
+          </button>
+          <a 
+            href="/CV_Patricio_Garcia.pdf" 
+            download 
+            className={`contact-card ${isDownloaded ? 'copied' : ''}`} // Añadimos clase condicional
+            onClick={handleDownloadClick} // 3. Añadimos el manejador de clic
+          >
+            <Download size={40} />
+            {/* 4. El texto ahora es condicional */}
+            <span>{isDownloaded ? t('contactPage.cvDownloaded') : t('contactPage.downloadCV')}</span>
+          </a>
+        </div>
       </div>
     </div>
   );

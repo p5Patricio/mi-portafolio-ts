@@ -2,10 +2,6 @@
 
 /* Contenedor principal de la página */
 .page-container {
-  /* Espacio superior amplio para no quedar debajo de la navbar */
-  padding-top: 10px; 
-  /* Espacio en la parte inferior */
-  padding-bottom: 10px;
   width: 100%;
   box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
 }
