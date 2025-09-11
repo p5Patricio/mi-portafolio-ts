@@ -3,17 +3,20 @@
 .presentation-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  justify-content: center;
   width: 100%;
-  
-  /* Mantenemos el padding responsivo */
-  padding-left: 7%;
-  padding-right: 5%;
+  box-sizing: border-box;
+  /* Espacio superior generoso para no chocar con la navbar */
+  padding-top: 150px; 
+  padding-bottom: 5rem;
+  min-height: 100vh;
+}
 
-  /* Ajustes de espaciado vertical y box-sizing */
-  margin-top: 20px;
-  padding-top: 15vh;
+.presentation-content {
+  width: 100%;
+  max-width: 1800px; /* Ancho máximo para el contenido */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 0 5vw;   /* Margen lateral responsivo (5% a cada lado) */
   box-sizing: border-box;
 }
 
@@ -21,45 +24,67 @@
   display: flex;
   align-items: baseline;
   gap: 1.5rem;
-  
-  /* =============================================================== */
-  /* SOLUCIÓN CLAVE: Aseguramos que la fila ocupe el 100% de su      */
-  /* contenedor padre y no más.                                      */
-  width: 100%; /* <-- AÑADE ESTA LÍNEA */
-  /* =============================================================== */
-
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
+  width: 100%;
 }
 
 /* NUEVA CLASE: Para las filas que necesitan indentación */
 .presentation-row.indented {
-  padding-left: 15%; /* Ajusta este porcentaje para más o menos indentación */
+  padding-left: 10%; /* Ajusta este porcentaje para más o menos indentación */
 }
 
 .text-large {
-  /* =============================================================== */
-  /* SOLUCIÓN PARA ESCRITORIO: Reducimos el valor de 'vw' para      */
-  /* compensar el padding del contenedor. Pasamos de 10vw a 8.5vw.   */
-  font-size: clamp(3rem, 8.5vw, 7rem); /* <-- MODIFICA ESTA LÍNEA */
-  /* =============================================================== */
+  /* Hacemos que este elemento sea flexible: crecerá y se encogerá */
+  flex: 1 1 auto;
+  min-width: 0; /* Un truco crucial para que flexbox permita al texto encogerse */
 
-  letter-spacing: -2px;
+  /* --- CAMBIO PRINCIPAL AQUÍ --- */
+  /* Usamos clamp para un tamaño de fuente fluido y responsivo */
+  /* Mínimo 4rem, idealmente 9% del ancho de la pantalla, máximo 9rem */
+  font-size: clamp(4rem, 9vw, 9rem);
+  
+  /* Estilos visuales base */
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
   color: var(--text-color);
   
-  /* Mantenemos esta regla de seguridad para romper palabras */
-  overflow-wrap: break-word;
+  /* Propiedad correcta para el ajuste de palabras largas */
+  overflow-wrap: break-word; 
+  text-align: left;
 }
 
+/* Estilos para el texto pequeño ("I'm a", "&") */
 .text-small-italic {
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  /* Este elemento no se encogerá, manteniendo su tamaño */
+  flex-shrink: 0; 
+  
+  /* Estilos visuales */
+  font-size: 2.5rem;
   font-weight: 400;
   font-style: italic;
   line-height: 1;
   color: var(--primary-color);
+}
+
+/* --- Media Queries para controlar el tamaño en diferentes pantallas --- */
+
+@media (max-width: 1600px) {
+  .text-small-italic { font-size: 2rem; }
+}
+
+@media (max-width: 1200px) {
+  .text-small-italic { font-size: 1.7rem; }
+}
+
+@media (max-width: 900px) {
+  .presentation-container { padding-top: 100px; }
+  .presentation-row { justify-content: center; flex-wrap: wrap; text-align: center; }
+  .text-small-italic { font-size: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .presentation-row.indented { padding-left: 0; }
+  .text-small-italic { font-size: 1.3rem; }
 }
 
 @keyframes fadeInUp {
@@ -73,14 +98,10 @@
   }
 }
 
-/* En src/pages/Home.css */
-/* --- AÑADE ESTOS ESTILOS AL FINAL DEL ARCHIVO --- */
-
 .about-section {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 3rem;
-  /* CAMBIO CLAVE: Alinea los items al inicio de la celda del grid */
   align-items: start; 
   max-width: 1500px;
   width: 100%;
@@ -248,28 +269,22 @@
 
 @media (max-width: 768px) {
   .presentation-container {
-    margin-left: 0;
-    padding: 10vh 5% 0 5%; /* padding izquierdo y derecho igual */
-    align-items: center;
+    padding-top: 100px;
+    text-align: center; /* Centramos todo el texto en móvil */
   }
 
   .presentation-row {
     justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-
-  .presentation-row.indented {
-    padding-left: 0;
+    flex-wrap: wrap; /* Permitimos el salto de línea en móvil */
   }
 
   .text-large {
-    font-size: clamp(2rem, 10vw, 5rem); /* más pequeño para móviles */
+    font-size: 13vw; /* Hacemos la letra más grande y llamativa en móvil */
+    text-align: center;
   }
 
   .text-small-italic {
-    font-size: clamp(1rem, 5vw, 1.8rem);
+    font-size: 5vw;
   }
 }
 

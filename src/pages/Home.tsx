@@ -52,33 +52,36 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div>
       <div className="presentation-container">
-        <div className="presentation-row" style={{ animationDelay: '0.2s' }}>
-          <span className="text-small-italic">{t('presentation.line1_iam')}</span>
-          <span className="text-large">{t('presentation.line1_role')}</span>
-        </div>
-        <div className="presentation-row indented" style={{ animationDelay: '0.4s' }}>
-          <TextPressure
-            text={t('presentation.line2_specialty') as string}
-            className="text-large"
-            dynamicFontSize={false}
-            textColor="var(--text-color)"
-            minFontSize={130}
-          />
-        </div>
-        <div className="presentation-row" style={{ animationDelay: '0.6s' }}>
-          <span className="text-small-italic">{t('presentation.conjunction')}</span>
-          <span className="text-large">{t('presentation.line3_role')}</span>
-        </div>
-        <div className="presentation-row indented" style={{ animationDelay: '0.8s' }}>
-          <TextPressure
-            text={t('presentation.line4_specialty') as string}
-            className="text-large"
-            dynamicFontSize={false}
-            textColor="var(--text-color)"
-            minFontSize={130}
-          />
+        <div className="presentation-content">
+          <div className="presentation-row" style={{ animationDelay: '0.2s' }}>
+            <span className="text-small-italic">{t('presentation.line1_iam')}</span>
+            <span className="text-large">{t('presentation.line1_role')}</span>
+          </div>
+          <div className="presentation-row indented" style={{ animationDelay: '0.4s' }}>
+            <TextPressure
+              text={t('presentation.line2_specialty') as string}
+              className="text-large"
+              dynamicFontSize={false}
+              textColor="var(--text-color)"
+              minFontSize={130}
+            />
+          </div>
+          <div className="presentation-row" style={{ animationDelay: '0.6s' }}>
+            <span className="text-small-italic">{t('presentation.conjunction')}</span>
+            <span className="text-large">{t('presentation.line3_role')}</span>
+          </div>
+          
+          <div className="presentation-row indented" style={{ animationDelay: '0.8s' }}>
+            <TextPressure
+              text={t('presentation.line4_specialty') as string}
+              className="text-large"
+              dynamicFontSize={false}
+              textColor="var(--text-color)"
+              minFontSize={130}
+            />
+          </div>
         </div>
       </div>
 
@@ -145,7 +148,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </>
+    </div> 
   );
 };
 
