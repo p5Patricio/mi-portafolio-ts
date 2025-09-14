@@ -14,10 +14,14 @@
 
 .presentation-content {
   width: 100%;
-  max-width: 1800px; /* Ancho máximo para el contenido */
+  max-width: 1450px; /* Ancho máximo para el contenido */
   margin: 0 auto; /* Centra el contenedor */
   padding: 0 5vw;   /* Margen lateral responsivo (5% a cada lado) */
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente el bloque de texto */
+  gap: 1vh;
 }
 
 .presentation-row {
@@ -27,30 +31,33 @@
   width: 100%;
 }
 
+.presentation-rowfijo {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  width: 70%;
+}
+
 /* NUEVA CLASE: Para las filas que necesitan indentación */
 .presentation-row.indented {
-  padding-left: 10%; /* Ajusta este porcentaje para más o menos indentación */
+  padding-left: 0%; /* Ajusta este porcentaje para más o menos indentación */
 }
 
 .text-large {
-  /* Hacemos que este elemento sea flexible: crecerá y se encogerá */
-  flex: 1 1 auto;
-  min-width: 0; /* Un truco crucial para que flexbox permita al texto encogerse */
-
-  /* --- CAMBIO PRINCIPAL AQUÍ --- */
-  /* Usamos clamp para un tamaño de fuente fluido y responsivo */
-  /* Mínimo 4rem, idealmente 9% del ancho de la pantalla, máximo 9rem */
-  font-size: clamp(4rem, 9vw, 9rem);
+  /* Hacemos explícito que puede crecer y encogerse */
+  flex: 1 1 auto; 
+  min-width: 0; /* Truco crucial para que flexbox permita encoger */
   
-  /* Estilos visuales base */
+  font-size: clamp(2.5rem, min(9vw, 12vh), 9rem);
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.1;
   color: var(--text-color);
-  
-  /* Propiedad correcta para el ajuste de palabras largas */
-  overflow-wrap: break-word; 
   text-align: left;
+
+  /* ✨ CAMBIO: Reglas más robustas para el desbordamiento */
+  overflow-wrap: break-word;
+  word-break: break-all; /* Fuerza el salto de línea para evitar el desbordamiento a toda costa */
 }
 
 /* Estilos para el texto pequeño ("I'm a", "&") */
@@ -319,4 +326,14 @@
     padding: 8px 16px;
     font-size: 0.9rem;
   }
+}
+
+/* ✨ AÑADE ESTA NUEVA REGLA AL FINAL DE TU CSS ✨ */
+.presentation-row:nth-child(2) {
+  margin-bottom: 9vh; /* Espacio extra después de la segunda línea (ENGINEER) */
+}
+
+/* ✨ AÑADE ESTA NUEVA REGLA EN TU CSS ✨ */
+.text-italic-static {
+  font-style: italic;
 }

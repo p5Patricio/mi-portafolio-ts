@@ -54,36 +54,51 @@ const Home = () => {
   return (
     <div>
       <div className="presentation-container">
-        <div className="presentation-content">
-          <div className="presentation-row" style={{ animationDelay: '0.2s' }}>
-            <span className="text-small-italic">{t('presentation.line1_iam')}</span>
-            <span className="text-large">{t('presentation.line1_role')}</span>
-          </div>
-          <div className="presentation-row indented" style={{ animationDelay: '0.4s' }}>
-            <TextPressure
-              text={t('presentation.line2_specialty') as string}
-              className="text-large"
-              dynamicFontSize={false}
-              textColor="var(--text-color)"
-              minFontSize={130}
-            />
-          </div>
-          <div className="presentation-row" style={{ animationDelay: '0.6s' }}>
-            <span className="text-small-italic">{t('presentation.conjunction')}</span>
-            <span className="text-large">{t('presentation.line3_role')}</span>
-          </div>
-          
-          <div className="presentation-row indented" style={{ animationDelay: '0.8s' }}>
-            <TextPressure
-              text={t('presentation.line4_specialty') as string}
-              className="text-large"
-              dynamicFontSize={false}
-              textColor="var(--text-color)"
-              minFontSize={130}
-            />
-          </div>
+      <div className="presentation-content">
+        <div className="presentation-rowfijo" style={{ animationDelay: '0.2s' }}>
+          <span className="text-small-italic">{t('presentation.line1_iam')}</span>
+          {/* Usamos TextPressure para TODO con el tamaño dinámico APAGADO */}
+          <TextPressure
+            text={t('presentation.line1_role') as string} // SOFTWARE
+            className="text-large text-italic-static"
+            textColor="var(--text-color)"
+            dynamicFontSize={false}
+            enableEffect={false}
+            fontFamily= "var(--font-family-secondary)"
+          />
+        </div>
+        
+        <div className="presentation-row" style={{ animationDelay: '0.4s'}}>
+          <TextPressure
+            text={t('presentation.line2_specialty') as string} // ENGINEER
+            className="text-large"
+            textColor="var(--text-color)"
+            dynamicFontSize={false}
+          />
+        </div>
+
+        <div className="presentation-rowfijo" style={{ animationDelay: '0.6s' }}>
+          <span className="text-small-italic">{t('presentation.conjunction')}</span>
+          <TextPressure
+            text={t('presentation.line3_role') as string} // BACKEND
+            className="text-large text-italic-static"
+            textColor="var(--text-color)"
+            dynamicFontSize={false}
+            enableEffect={false}
+            fontFamily= "var(--font-family-secondary)"
+          />
+        </div>
+        
+        <div className="presentation-row" style={{ animationDelay: '0.8s' }}>
+          <TextPressure
+            text={t('presentation.line4_specialty') as string} // DEVELOPER
+            className="text-large"
+            textColor="var(--text-color)"
+            dynamicFontSize={false}
+          />
         </div>
       </div>
+    </div>
 
       <section
         ref={aboutSectionRef}

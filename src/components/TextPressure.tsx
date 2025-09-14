@@ -15,7 +15,8 @@ interface TextPressureProps {
     strokeColor?: string;
     className?: string;
     minFontSize?: number;
-     dynamicFontSize?: boolean;
+    dynamicFontSize?: boolean;
+    enableEffect?: boolean;
 }
 
 const TextPressure: React.FC<TextPressureProps> = ({
@@ -34,6 +35,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     className = '',
     minFontSize = 24,
     dynamicFontSize = true,
+    enableEffect = true,
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -114,6 +116,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     }, [setSize]);
 
     useEffect(() => {
+        if (enableEffect) {
         let rafId: number;
         const animate = () => {
             mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / 15;
@@ -154,7 +157,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
         animate();
         return () => cancelAnimationFrame(rafId);
-    }, [width, weight, italic, alpha, chars.length]);
+        }
+    }, [width, weight, italic, alpha, chars.length, enableEffect]);
 
     const dynamicClassName = [className, flex ? 'flex' : '', stroke ? 'stroke' : '']
         .filter(Boolean)
@@ -208,15 +212,13 @@ const TextPressure: React.FC<TextPressureProps> = ({
                 style={{
                     fontFamily,
                     textTransform: 'uppercase',
-                    fontSize: fontSize,
+                    ...(dynamicFontSize && { fontSize: fontSize }),
                     lineHeight,
                     transform: `scale(1, ${scaleY})`,
                     transformOrigin: 'center top',
                     margin: 0,
                     textAlign: 'center',
                     userSelect: 'none',
-                    whiteSpace: 'nowrap',
-                    fontWeight: 100,
                     width: '100%',
                 }}
             >
