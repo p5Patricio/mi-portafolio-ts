@@ -48,12 +48,8 @@ const Navbar = () => {
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
 
-  return (
+  return (  
     <nav className={`navbar-container ${isVisible ? 'visible' : 'hidden'}`}>
-      {/* Botón hamburguesa */}
-      <div className="mobile-menu-toggle" onClick={toggleMenu}>
-        {menuOpen ? <X size={28} /> : <Menu size={28} />}
-      </div>
 
       {/* Links versión escritorio */}
       <div className="navbar-links desktop-only">
@@ -72,20 +68,36 @@ const Navbar = () => {
         <ThemeToggleButton />
       </div>
 
+      <div className="mobile-header-controls">
+        <LanguageSelector /> {/* El selector de idioma ahora también estará aquí */}
+        <ThemeToggleButton />
+        <div className="mobile-menu-toggle" onClick={toggleMenu}>
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </div>
+      </div>
+
       {/* Menú hamburguesa (móvil) */}
-      {menuOpen && (
+      <CSSTransition
+        in={menuOpen}
+        timeout={300}
+        classNames="mobile-menu-animation"
+        unmountOnExit
+      >
         <div className="mobile-menu">
           <NavLink to="/" onClick={toggleMenu}><span>{t('Inicio')}</span></NavLink>
           <NavLink to="/proyectos" onClick={toggleMenu}><span>{t('Proyectos')}</span></NavLink>
           <NavLink to="/servicios" onClick={toggleMenu}><span>{t('Servicios')}</span></NavLink>
           <NavLink to="/sobre-mi" onClick={toggleMenu}><span>{t('Sobremi')}</span></NavLink>
           <NavLink to="/contacto" onClick={toggleMenu}><span>{t('contact')}</span></NavLink>
+          
+          {/* ✨ ELIMINAMOS EL ThemeToggleButton DE AQUÍ ✨ */}
+          {/* El LanguageSelector puede quedarse o quitarse, según prefieras */}
+          {/* En este ejemplo lo dejamos para que se vea en ambos sitios. */}
           <div className="mobile-menu-controls">
-            <LanguageSelector />
-            <ThemeToggleButton />
+             {/* <LanguageSelector />  // Decide si lo quieres aquí también */}
           </div>
         </div>
-      )}
+      </CSSTransition>
     </nav>
   );
 };

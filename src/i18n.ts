@@ -43,7 +43,7 @@ const resources = {
       },
       "contactPage": {
         "title": "Ponte en Contacto",
-        "intro": "Siempre estoy abierto a conectar. Si tienes una pregunta, una oportunidad de colaboración o simplemente quieres saludar, no dudes en contactarme a través de estos canales o descargar mi CV.",
+        "intro": "Siempre estoy con animo de aprender. Si tienes una pregunta, una oportunidad de colaboración o simplemente quieres saludar, no dudes en contactarme a través de estos canales o descargar mi CV.",
         "github": "GitHub",
         "linkedin": "LinkedIn",
         "emailAddress": "pa.garciaperezvela@ugto.mx",

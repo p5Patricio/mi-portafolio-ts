@@ -55,7 +55,7 @@ const Home = () => {
     <div>
       <div className="presentation-container">
       <div className="presentation-content">
-        <div className="presentation-rowfijo" style={{ animationDelay: '0.2s' }}>
+        <div className="presentation-row" style={{ animationDelay: '0.2s' }}>
           <span className="text-small-italic">{t('presentation.line1_iam')}</span>
           {/* Usamos TextPressure para TODO con el tamaño dinámico APAGADO */}
           <TextPressure
@@ -68,16 +68,16 @@ const Home = () => {
           />
         </div>
         
-        <div className="presentation-row" style={{ animationDelay: '0.4s'}}>
+        <div className="presentation-row indented" style={{ animationDelay: '0.4s'}}>
           <TextPressure
             text={t('presentation.line2_specialty') as string} // ENGINEER
-            className="text-large"
+            className="text-large text-tall"
             textColor="var(--text-color)"
             dynamicFontSize={false}
           />
         </div>
 
-        <div className="presentation-rowfijo" style={{ animationDelay: '0.6s' }}>
+        <div className="presentation-row" style={{ animationDelay: '0.6s' }}>
           <span className="text-small-italic">{t('presentation.conjunction')}</span>
           <TextPressure
             text={t('presentation.line3_role') as string} // BACKEND
@@ -89,10 +89,10 @@ const Home = () => {
           />
         </div>
         
-        <div className="presentation-row" style={{ animationDelay: '0.8s' }}>
+        <div className="presentation-row indented" style={{ animationDelay: '0.8s' }}>
           <TextPressure
             text={t('presentation.line4_specialty') as string} // DEVELOPER
-            className="text-large"
+            className="text-large text-tall"
             textColor="var(--text-color)"
             dynamicFontSize={false}
           />

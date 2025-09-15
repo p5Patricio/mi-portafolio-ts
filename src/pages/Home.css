@@ -20,7 +20,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente el bloque de texto */
+  justify-content: center;
   gap: 1vh;
 }
 
@@ -31,38 +31,40 @@
   width: 100%;
 }
 
-.presentation-rowfijo {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  width: 70%;
-}
-
 /* NUEVA CLASE: Para las filas que necesitan indentación */
 .presentation-row.indented {
   padding-left: 0%; /* Ajusta este porcentaje para más o menos indentación */
 }
 
 .text-large {
-  /* Hacemos explícito que puede crecer y encogerse */
-  flex: 1 1 auto; 
-  min-width: 0; /* Truco crucial para que flexbox permita encoger */
+  flex: 1 1 auto;
+  min-width: 0;
   
-  font-size: clamp(2.5rem, min(9vw, 12vh), 9rem);
+  /* Esta es la nueva función: tomará el valor más pequeño entre el 8% del ancho y el 11% del alto,
+     lo que evita que se haga gigante en pantallas anchas. */
+  font-size: clamp(2rem, min(8vw, 11vh), 9rem);
+  
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.1;
   color: var(--text-color);
   text-align: left;
-
-  /* ✨ CAMBIO: Reglas más robustas para el desbordamiento */
   overflow-wrap: break-word;
-  word-break: break-all; /* Fuerza el salto de línea para evitar el desbordamiento a toda costa */
+  word-break: break-all;
+}
+
+/* ✨ ASEGÚRATE DE QUE ESTA CLASE ESTÉ SEPARADA Y NO DENTRO DE .text-large ✨ */
+.text-tall {
+  display: inline-block;
+  transform: scaleY(1.15);
+  transform-origin: center;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 /* Estilos para el texto pequeño ("I'm a", "&") */
 .text-small-italic {
-  /* Este elemento no se encogerá, manteniendo su tamaño */
+  /* Este elemento no se encogerá */
   flex-shrink: 0; 
   
   /* Estilos visuales */
@@ -85,12 +87,22 @@
 
 @media (max-width: 900px) {
   .presentation-container { padding-top: 100px; }
-  .presentation-row { justify-content: center; flex-wrap: wrap; text-align: center; }
+  
+  /* ✨ CAMBIO CLAVE: Añadimos .presentation-rowfijo y width: 100% */
+  .presentation-row, .presentation-rowfijo { 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    text-align: center;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  }
+
   .text-small-italic { font-size: 1.5rem; }
 }
 
 @media (max-width: 600px) {
-  .presentation-row.indented { padding-left: 0; }
+  .presentation-row.indented {
+    padding-left: 0;
+  }
   .text-small-italic { font-size: 1.3rem; }
 }
 

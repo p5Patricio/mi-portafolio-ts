@@ -197,10 +197,17 @@
 
 /* === BOTÓN HAMBURGUESA === */
 .mobile-menu-toggle {
-  margin-top: 2%;
-  display: none;
+  /* Ya no necesita position: absolute */
   cursor: pointer;
   color: var(--text-color);
+  /* Mantenemos el z-index para que esté por encima de otros elementos si fuera necesario */
+  z-index: 31; 
+}
+
+.mobile-header-controls {
+  display: none; /* Oculto por defecto */
+  align-items: center;
+  gap: 1.5rem; /* Espacio entre el theme-toggle y el menú */
   z-index: 30;
 }
 
@@ -221,31 +228,60 @@
   z-index: 25;
 }
 .mobile-menu a {
+  position: relative;
+  text-decoration: none;
+  border-radius: 50px; /* Bordes de píldora */
+  box-shadow: 0px 0px 9px 1px var(--primary-color); /* Sombra brillante */
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
   width: 100%;
-  max-width: 200px;
-  border-radius: 12px;
-  margin: 0.4rem 0;
+  max-width: 220px;
+  margin: 0.5rem 0; /* Un poco más de margen vertical */
   text-align: center;
-  border: 1px solid var(--contorno-color);
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-.mobile-menu a:hover {
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  transform: scale(1.02);
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  transform: translateY(-4px) scale(1.03); /* Efecto hover igual al de escritorio */
+  box-shadow: 0px 4px 18px 3px var(--primary-color);
 }
 .mobile-menu a span {
   display: block;
-  padding: 10px;
-  font-size: 0.95rem;
+  padding: 10px 20px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
   font-weight: 500;
+}
+
+.mobile-menu a:hover span,
+.mobile-menu a.active span {
+  color: var(--primary-color);
+  font-weight: bold;
 }
 .mobile-controls {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+.mobile-menu-animation-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.mobile-menu-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.mobile-menu-animation-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mobile-menu-animation-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
 }
 
 /* === ENLACE ACTIVO === */
@@ -309,27 +345,108 @@
   }
 }
 @media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-    position: absolute;
-    top: 18px;
-    right: 20px;
-  }
-
-  .desktop-only {
-    display: none;
-  }
-
-  .navbar-container {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 1rem;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
+  .desktop-only,
   .navbar-controls {
     display: none;
   }
+  
+  /* 2. Mostramos los nuevos controles móviles */
+  .mobile-header-controls {
+    display: flex;
+  }
+
+  /* 3. Ajustamos el contenedor principal para alinear los controles a la derecha */
+  .navbar-container {
+    flex-direction: row;
+    justify-content: flex-end; /* Alinea los controles a la derecha */
+    align-items: center; /* Centra verticalmente los íconos */
+    padding: 0 1.5rem;
+    
+    /* ✨ CAMBIO 1: Añadimos un poco de margen superior */
+    top: 30px;
+
+    /* ✨ CAMBIO 2: Hacemos que no ocupe todo el ancho para que se vea como una "píldora" */
+    left: 25px;
+    right: 0px;
+    border-radius: 12px; /* Le devolvemos el borde redondeado */
+
+    background-color: var(--background-color-transparent);
+    backdrop-filter: blur(5px);
+
+    /* ✨ CAMBIO 3: Eliminamos la sombra inferior (box-shadow) */
+    box-shadow: none;
+  
+  .mobile-header-controls .language-toggle-button:hover {
+    /* Efecto hover sutil */
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Estilos para el menú desplegable de idiomas */
+  .mobile-header-controls .language-menu {
+    /* Aseguramos que el menú se despliegue correctamente */
+    left: 0px; /* Ajusta este valor si es necesario */
+  }
+  .mobile-header-controls .language-toggle-button {
+    /* Estilos base del botón */
+    background-color: transparent;
+    border: 1px solid transparent; /* Sin borde por defecto */
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .mobile-header-controls .language-menu {
+    /* Fondo con efecto blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: var(--background-color-transparent);
+
+    border-radius: 8px;
+    padding: 0.5rem;
+    
+    /* Posicionamiento */
+    top: calc(100% + 10px); /* Justo debajo del botón principal */
+  }
+
+  /* Estilos para los botones dentro del menú */
+  .mobile-header-controls .language-menu li button {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px; /* Reseteamos el margen */
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--contorno-color);
+  }
+
+  /* Efecto al pasar el cursor */
+  .mobile-header-controls .language-menu li button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Estilo para el idioma seleccionado (deshabilitado) */
+  .mobile-header-controls .language-menu li button:disabled {
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: default;
+    background-color: transparent;
+  }
+  }
+
+  /* 4. Reposicionamos el menú desplegable */
+  .mobile-menu {
+    top: 70px; /* Un poco más abajo para no chocar con la nueva barra */
+    right: 1.5rem;
+  }
+
+  /* 5. Eliminamos la regla anterior para el toggle */
+  /* .mobile-menu-toggle { 
+    Ya no necesita position, top, ni right 
+    Lo dejamos vacío para que herede los estilos de flexbox 
+  } */
 }
