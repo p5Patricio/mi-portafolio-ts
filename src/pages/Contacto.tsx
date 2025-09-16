@@ -60,7 +60,7 @@ const Contacto = () => {
             <p className="copy-feedback">{isCopied ? t('contactPage.emailCopied') : t('contactPage.emailAction')}</p>
           </button>
           <a 
-            href="/CV_Patricio_Garcia.pdf" 
+            href={`${process.env.PUBLIC_URL}/CV_Patricio_Garcia.pdf`}
             download 
             className={`contact-card ${isDownloaded ? 'copied' : ''}`} // Añadimos clase condicional
             onClick={handleDownloadClick} // 3. Añadimos el manejador de clic

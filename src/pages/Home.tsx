@@ -110,13 +110,16 @@ const Home = () => {
       >
         <div className="about-left-column">
           <div className="about-photo-container">
-            <img src="/images/foto-perfil.png" alt="Foto de Patricio" className="about-photo" />
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/foto-perfil.png`} 
+              alt="Foto de Patricio" 
+              className="about-photo" 
+            />
           </div>
 
           <a
-            href="/CV_Patricio_Garcia.pdf"
+            href={`${process.env.PUBLIC_URL}/CV_Patricio_Garcia.pdf`}
             download
-            // Usamos la nueva clase para el botón y mantenemos la clase condicional
             className={`download-cv-button ${isDownloaded ? 'copied' : ''}`}
             onClick={handleDownloadClick}
           >
