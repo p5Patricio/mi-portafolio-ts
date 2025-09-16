@@ -58,14 +58,16 @@ const Home = () => {
         <div className="presentation-row" style={{ animationDelay: '0.2s' }}>
           <span className="text-small-italic">{t('presentation.line1_iam')}</span>
           {/* Usamos TextPressure para TODO con el tamaño dinámico APAGADO */}
-          <TextPressure
-            text={t('presentation.line1_role') as string} // SOFTWARE
-            className="text-large text-italic-static"
-            textColor="var(--text-color)"
-            dynamicFontSize={false}
-            enableEffect={false}
-            fontFamily= "var(--font-family-secondary)"
-          />
+          <div className="text-pressure-wrapper">
+            <TextPressure
+              text={t('presentation.line1_role') as string} // SOFTWARE
+              className="text-large text-cursive"
+              textColor="var(--text-color)"
+              dynamicFontSize={false}
+              enableEffect={false}
+              fontFamily="var(--font-family-cursive)"
+            />
+          </div>
         </div>
         
         <div className="presentation-row indented" style={{ animationDelay: '0.4s'}}>
@@ -79,14 +81,16 @@ const Home = () => {
 
         <div className="presentation-row" style={{ animationDelay: '0.6s' }}>
           <span className="text-small-italic">{t('presentation.conjunction')}</span>
-          <TextPressure
-            text={t('presentation.line3_role') as string} // BACKEND
-            className="text-large text-italic-static"
-            textColor="var(--text-color)"
-            dynamicFontSize={false}
-            enableEffect={false}
-            fontFamily= "var(--font-family-secondary)"
-          />
+          <div className="text-pressure-wrapper">
+            <TextPressure
+              text={t('presentation.line3_role') as string} // BACKEND
+              className="text-large text-cursive"
+              textColor="var(--text-color)"
+              dynamicFontSize={false}
+              enableEffect={false}
+              fontFamily="var(--font-family-cursive)"
+            />
+          </div>
         </div>
         
         <div className="presentation-row indented" style={{ animationDelay: '0.8s' }}>

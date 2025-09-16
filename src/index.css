@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuggles&display=swap');
+
+:root {
+  --font-family-cursive: 'Fuggles', cursive;
+}
+
 /* PASO 1: DEFINIR LAS PALETAS DE COLORES (VARIABLES) PARA CADA TEMA */
 /* Estos son los colores que se usarán cuando el <body> tenga la clase 'light-theme' */
 body.light-theme {

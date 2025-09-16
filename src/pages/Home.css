@@ -7,8 +7,7 @@
   width: 100%;
   box-sizing: border-box;
   /* Espacio superior generoso para no chocar con la navbar */
-  padding-top: 150px; 
-  padding-bottom: 5rem;
+  padding-top: 30px; 
   min-height: 100vh;
 }
 
@@ -52,14 +51,26 @@
   overflow-wrap: break-word;
   word-break: break-all;
 }
+.text-cursive {
+  font-family: var(--font-family-cursive);
+  text-transform: none; /* Las fuentes cursivas se ven mejor sin mayúsculas forzadas */
+  font-weight: 700;
+}
+
+.text-pressure-wrapper{
+  width: 80%;
+}
 
 /* ✨ ASEGÚRATE DE QUE ESTA CLASE ESTÉ SEPARADA Y NO DENTRO DE .text-large ✨ */
 .text-tall {
-  display: inline-block;
-  transform: scaleY(1.15);
-  transform-origin: center;
   font-weight: 800;
   letter-spacing: 0.02em;
+}
+
+.text-tall span {
+  display: inline-block; /* Asegura que la transformación se aplique bien */
+  transform: scaleY(1.7); /* Estira cada letra individualmente */
+  transform-origin: center; /* Estira desde el centro de la letra */
 }
 
 /* Estilos para el texto pequeño ("I'm a", "&") */
@@ -89,7 +100,7 @@
   .presentation-container { padding-top: 100px; }
   
   /* ✨ CAMBIO CLAVE: Añadimos .presentation-rowfijo y width: 100% */
-  .presentation-row, .presentation-rowfijo { 
+  .presentation-row { 
     justify-content: center; 
     flex-wrap: wrap; 
     text-align: center;
@@ -97,6 +108,10 @@
   }
 
   .text-small-italic { font-size: 1.5rem; }
+  .text-large.text-cursive {
+    /* Esta función clamp() es más agresiva para la fuente ancha "Fuggles" */
+    font-size: clamp(3.5rem, 14vw, 5rem);
+  }
 }
 
 @media (max-width: 600px) {
@@ -104,6 +119,10 @@
     padding-left: 0;
   }
   .text-small-italic { font-size: 1.3rem; }
+  .text-large.text-cursive {
+    /* Esta función clamp() es más agresiva para la fuente ancha "Fuggles" */
+    font-size: clamp(1.5rem, 14vw, 2.5rem);
+  }
 }
 
 @keyframes fadeInUp {
