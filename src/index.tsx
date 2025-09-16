@@ -1,9 +1,10 @@
+import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+// ✨ CAMBIO 1: Importa HashRouter en lugar de BrowserRouter
+import { HashRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './context/ThemeContext';
 import './i18n';
 
@@ -12,11 +13,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
+    <ThemeProvider>
+      {/* ✨ CAMBIO 2: Usa HashRouter aquí ✨ */}
+      <Router>
         <App />
-      </ThemeProvider>
-    </BrowserRouter>
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

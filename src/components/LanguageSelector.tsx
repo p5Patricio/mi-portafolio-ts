@@ -1,3 +1,5 @@
+// src/components/LanguageSelector.tsx
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -6,18 +8,19 @@ const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Un objeto para mapear los códigos de idioma a sus nombres completos
   const languages = {
     es: 'Español',
     en: 'English',
   };
 
+  // ✨ CAMBIO CLAVE AQUÍ: Obtenemos el código de idioma base (ej. "es" de "es-MX")
+  const currentLanguageCode = i18n.language.split('-')[0] as keyof typeof languages;
+
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
-    setIsOpen(false); // Cierra el menú al seleccionar
+    setIsOpen(false);
   };
 
-  // Efecto para manejar el clic fuera del componente
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -29,20 +32,18 @@ const LanguageSelector = () => {
   }, []);
 
   return (
-    // Añadimos una clase y la referencia para el clic exterior
     <div className="language-selector" ref={dropdownRef}>
-      {/* Este es el botón que siempre se ve */}
       <button onClick={() => setIsOpen(!isOpen)} className="language-toggle-button">
-        {languages[i18n.language as keyof typeof languages]}
+        {/* Usamos la nueva variable para mostrar siempre el idioma correcto */}
+        {languages[currentLanguageCode]}
         <span className={`arrow ${isOpen ? 'up' : 'down'}`}></span>
       </button>
 
-      {/* El menú desplegable que aparece y desaparece */}
       {isOpen && (
         <ul className="language-menu">
           {Object.entries(languages).map(([code, name]) => (
             <li key={code}>
-              <button onClick={() => changeLanguage(code)} disabled={i18n.language === code}>
+              <button onClick={() => changeLanguage(code)} disabled={currentLanguageCode === code}>
                 {name}
               </button>
             </li>

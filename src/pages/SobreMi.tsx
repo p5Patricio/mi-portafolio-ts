@@ -15,7 +15,8 @@ const SobreMi = () => {
         <div className="sobremi-left">
           {/* Cita 1 */}
           <div className="quote-block">
-            <img src="/images/garou.png" alt="Garou" className="quote-image" />
+            {/* ✨ CAMBIO AQUÍ ✨ */}
+            <img src={`${process.env.PUBLIC_URL}/images/garou.png`} alt="Garou" className="quote-image" />
             <blockquote className="sobremi-quote">
               "{t('sobreMiPage.quote1_text')}"
               <footer>{t('sobreMiPage.quote1_author')}</footer>
@@ -23,7 +24,8 @@ const SobreMi = () => {
           </div>
           {/* Cita 3 */}
           <div className="quote-block">
-            <img src="/images/newjeans.png" alt="NewJeans" className="quote-image" />
+            {/* ✨ CAMBIO AQUÍ ✨ */}
+            <img src={`${process.env.PUBLIC_URL}/images/newjeans.png`} alt="NewJeans" className="quote-image" />
             <blockquote className="sobremi-quote">
               "{t('sobreMiPage.quote3_text')}"
               <footer>{t('sobreMiPage.quote3_author')}</footer>
@@ -31,7 +33,8 @@ const SobreMi = () => {
           </div>
           {/* Cita 2 */}
           <div className="quote-block">
-            <img src="/images/isagi_kaiser.png" alt="Isagi and Kaiser" className="quote-image" />
+            {/* ✨ CAMBIO AQUÍ ✨ */}
+            <img src={`${process.env.PUBLIC_URL}/images/isagi_kaiser.png`} alt="Isagi and Kaiser" className="quote-image" />
             <blockquote className="sobremi-quote">
               "{t('sobreMiPage.quote2_text')}"
               <footer>{t('sobreMiPage.quote2_author')}</footer>
