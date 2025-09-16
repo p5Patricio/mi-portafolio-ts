@@ -22,7 +22,7 @@ const SobreMi = () => {
       <div className="intereses-section">
         <h3>{t('sobreMiPage.interests_title')}</h3>
         <div className="intereses-grid">
-          <div className="interes-pill"><Gamepad2 /><span>{t('sobreMi-Page.interest_games')}</span></div>
+          <div className="interes-pill"><Gamepad2 /><span>{t('sobreMiPage.interest_games')}</span></div>
           <div className="interes-pill"><Building /><span>{t('sobreMiPage.interest_mazda')}</span></div>
           <div className="interes-pill"><Trophy /><span>{t('sobreMiPage.interest_basketball')}</span></div>
           <div className="interes-pill"><Dumbbell /><span>{t('sobreMiPage.interest_gym')}</span></div>
