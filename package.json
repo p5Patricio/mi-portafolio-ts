@@ -2,6 +2,7 @@
   "name": "mi-portafolio-ts",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://p5patricio.github.io/mi-portafolio-ts",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6"
+    "@types/react-dom": "^19.1.6",
+    "gh-pages": "^6.3.0"
   }
 }
