@@ -1,0 +1,30 @@
+name: Deploy Portfolio
+on:
+  push:
+    branches: [main] # Se activa cada vez que hagas push a la rama main
+
+permissions:
+  contents: write # Permiso necesario para crear la rama de despliegue
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Versión recomendada para React/TS actual
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build # Genera la carpeta /build con el código listo
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          branch: gh-pages # GitHub Actions creará esta rama automáticamente
